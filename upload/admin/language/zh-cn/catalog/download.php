@@ -1,34 +1,42 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2016-10-22 09:12:56
+ * @modified         2016-11-05 17:35:21
+ */
+
 // Heading
-$_['heading_title']     = '下载文件';
+$_['heading_title']     = '下载管理';
 
 // Text
-$_['text_success']      = '成功: 已修改下载文件！';
-$_['text_list']         = '下载文件列表';
-$_['text_add']          = '添加下载文件';
-$_['text_edit']         = '编辑下载文件';
-$_['text_upload']       = '文件已成功上传！';
+$_['text_success']      = '成功：下载已修改！';
+$_['text_list']         = '下载列表';
+$_['text_add']          = '添加下载';
+$_['text_edit']         = '编辑下载';
+$_['text_upload']       = '文件已上传成功！';
 
 // Column
-$_['column_name']       = '下载文件名称';
+$_['column_name']       = '下载名称';
 $_['column_date_added'] = '添加日期';
-$_['column_action']     = '操作';
+$_['column_action']     = '管理';
 
 // Entry
-$_['entry_name']        = '下载文件名称';
-$_['entry_filename']    = '文件名';
+$_['entry_name']        = '下载名称';
+$_['entry_filename']    = '文件名称';
 $_['entry_mask']        = '掩码';
 
 // Help
-$_['help_filename']     = '可以通过点击上传按钮上传，也可以使用FTP工具上传到download下载目录并在下面输入相关资料。';
-$_['help_mask']         = '建议文件名和掩码是不同的，以防止获取到您的直接下载链接。';
+$_['help_filename']     = '请点击上传按钮上传文件或使用 FTP 上传到下载目录并在下面输入详细信息。';
+$_['help_mask']         = '建议文件名称和掩码输入不同内容，以防止使用链接直接下载此文件。';
 
 // Error
-$_['error_permission']  = '警告: 无权限修改下载文件！';
-$_['error_name']        = '下载文件名称必须介于3-64字符之间！';
-$_['error_upload']      = '必须上传文件！';
-$_['error_filename']    = '文件名必须介于3-128字符之间！';
+$_['error_permission']  = '错误：您没有权限修改下载！';
+$_['error_name']        = '名称必须在 3 至 64 个字符之间！';
+$_['error_upload']      = '请选择上传文件！';
+$_['error_filename']    = '文件名称必须在 3 至 128 个字符之间！';
 $_['error_exists']      = '文件不存在！';
-$_['error_mask']        = '掩码必须介于3-128字符之间！';
-$_['error_filetype']    = '无效文件类型！';
-$_['error_product']     = '警告: 无法删除该下载文件，该下载文件已经关联到 %s 个商品！';
+$_['error_mask']        = '掩码必须在 3 至 128 个字符之间！';
+$_['error_filetype']    = '无效的文件类型！';
+$_['error_product']     = '错误：该下载不能被删除，%s 产品正在使用！';

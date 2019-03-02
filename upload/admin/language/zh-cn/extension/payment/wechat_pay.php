@@ -1,34 +1,42 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2017-10-05 09:40:20
+ * @modified         2017-10-07 11:45:05
+ */
+
 // Heading
 $_['heading_title']                  = '微信支付';
 
 // Text
-$_['text_extension']                 = '扩展功能';
-$_['text_success']                   = '成功: 已修改微信支付账号资料！';
-$_['text_edit']                      = '编辑微信支付';
-$_['text_wechat_pay']                = '<a target="_BLANK" href="https://pay.weixin.qq.com"><img src="view/image/payment/Wechat.png" alt="微信支付官网" title="微信支付官网" style="border: 1px solid #EEEEEE;" /></a>';
+$_['text_extension']                 = '扩展';
+$_['text_success']                   = '成功：微信支付已修改！';
+$_['text_edit']                      = '编辑';
+$_['text_wechat_pay']                = '<a target="_BLANK" href="https://pay.weixin.qq.com"><img src="view/image/payment/wechat.png" alt="微信支付" title="微信支付" style="border: 1px solid #EEEEEE;" /></a>';
 
 // Entry
 $_['entry_app_id']                   = 'App ID';
-$_['entry_app_secret']               = 'App 密钥';
-$_['entry_mch_id']                   = '商户 ID';
-$_['entry_api_secret']               = 'API 密钥';
-$_['entry_debug']                    = '测试模式';
+$_['entry_app_secret']               = 'App Secret';
+$_['entry_mch_id']                   = '商户 Merchant ID';
+$_['entry_api_secret']               = 'API Secret';
+$_['entry_debug']                    = 'Debug 模式';
 $_['entry_total']                    = '订单金额';
-$_['entry_currency']                 = '货币';
-$_['entry_completed_status']         = '订单完成状态';
-$_['entry_geo_zone']                 = '区域群组';
+$_['entry_currency']                 = '货币单位';
+$_['entry_completed_status']         = '支付完成状态';
+$_['entry_geo_zone']                 = '区域';
 $_['entry_status']                   = '状态';
 $_['entry_sort_order']               = '排序';
 
 // Help
-$_['help_total']                     = '使得该支付方式有效所需最小订单支付金额';
-$_['help_currency']                  = '币种';
-$_['help_wechat_pay_setup']          = '';
+$_['help_total']                     = '订单金额必须大于此金额时此支付方式才会显示。';
+$_['help_currency']                  = '用户支付的货币单位';
+$_['help_wechat_pay_setup']          = '了解如何<a target="_blank" href="http://www.opencart.cn/docs/wechat-pay">配置微信支付</a>';
 
 // Error
-$_['error_permission']               = '警告: 无权限修改微信支付！';
-$_['error_app_id']                   = 'App ID 必填！';
-$_['error_app_secret']               = 'App 密钥必填！';
-$_['error_mch_id']                   = '商户 ID 必填！';
-$_['error_api_secret']               = 'API 密钥必填！';
+$_['error_permission']               = '错误：您没有权限修改微信支付！';
+$_['error_app_id']                   = '请输入 App ID';
+$_['error_app_secret']               = '请输入 App Secret';
+$_['error_mch_id']                   = '请输入 Merchant ID';
+$_['error_api_secret']               = '请输入 API Secret';

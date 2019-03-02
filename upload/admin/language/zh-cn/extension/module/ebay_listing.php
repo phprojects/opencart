@@ -1,32 +1,40 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2016-10-22 09:12:56
+ * @modified         2016-11-05 17:35:22
+ */
+
 // Heading
-$_['heading_title']     = 'eBay Listing';
+$_['heading_title']     = 'eBay 商品展示';
 
 // Text
-$_['text_extension']    = 'Extensions';
-$_['text_success']      = 'Success: You have modified module eBay featured!';
-$_['text_edit']        	= 'Edit eBay module';
-$_['text_list']         = 'Layout List';
-$_['text_register']     = 'You need to register and enable OpenBay Pro for eBay!';
-$_['text_about'] 		= 'The eBay display module allows you to display products from your eBay account directly on your website.';
-$_['text_latest']       = 'Latest';
-$_['text_random']       = 'Random';
+$_['text_extension']    = '扩展';
+$_['text_success']      = '成功：eBay Listing 已修改！';
+$_['text_edit']        	= '编辑';
+$_['text_list']         = '布局列表';
+$_['text_register']     = '请先注册并启用 OpenBar Pro！';
+$_['text_about']        = 'eBay 显示模块可直接将您 eBay 账号上的商品显示在网店上。';
+$_['text_latest']       = '最新';
+$_['text_random']       = '随机';
 
 // Entry
-$_['entry_name']        = 'Module Name';
-$_['entry_username']    = 'eBay username';
-$_['entry_keywords']    = 'Search Keywords';
-$_['entry_description'] = 'Include Description Search';
-$_['entry_limit']       = 'Limit';
-$_['entry_length']      = 'Length';
-$_['entry_width']       = 'Width';
-$_['entry_height']      = 'Height';
-$_['entry_site']   		= 'eBay Site';
-$_['entry_sort']   		= 'Sort by';
-$_['entry_status']   	= 'Status';
+$_['entry_name']        = '模块名称';
+$_['entry_username']    = 'eBay 用户名';
+$_['entry_keywords']    = '搜索关键词';
+$_['entry_description'] = '在商品描述中搜索';
+$_['entry_limit']       = '数量';
+$_['entry_length']      = '长度';
+$_['entry_width']       = '宽度';
+$_['entry_height']      = '高度';
+$_['entry_site']        = 'eBay 地址';
+$_['entry_sort']   	= '排序';
+$_['entry_status']   	= '状态';
 
 // Error
-$_['error_permission']  = 'Warning: You do not have permission to modify module eBay!';
-$_['error_name']        = 'Module Name must be between 3 and 64 characters!';
-$_['error_width']       = 'Width required!';
-$_['error_height']      = 'Height required!';
+$_['error_permission']  = '错误：您没有权限修改 eBay！';
+$_['error_name']        = '模块名称必须在 3 至 64 个字符之间！';
+$_['error_width']       = '请输入宽度！';
+$_['error_height']      = '请输入高度！';

@@ -80,6 +80,7 @@
                       <td class="text-left">{% if sort == 'p.model' %}<a href="{{ sort_model }}" class="{{ order|lower }}">{{ column_model }}</a>{% else %}<a href="{{ sort_model }}">{{ column_model }}</a>{% endif %}</td>
                       <td class="text-right">{% if sort == 'p.price' %}<a href="{{ sort_price }}" class="{{ order|lower }}">{{ column_price }}</a>{% else %}<a href="{{ sort_price }}">{{ column_price }}</a>{% endif %}</td>
                       <td class="text-right">{% if sort == 'p.quantity' %}<a href="{{ sort_quantity }}" class="{{ order|lower }}">{{ column_quantity }}</a>{% else %}<a href="{{ sort_quantity }}">{{ column_quantity }}</a>{% endif %}</td>
+                      <td class="text-left">{% if sort == 'p.status' %}<a href="{{ sort_status }}" class="{{ order|lower }}">{{ column_status }}</a>{% else %}<a href="{{ sort_status }}">{{ column_status }}</a> {% endif %}</td>
                       <td class="text-right">{{ column_action }}</td>
                     </tr>
                   </thead>
@@ -92,10 +93,15 @@
                             {% else %}
                               <input type="checkbox" name="selected[]" value="{{ product.product_id }}"/>
                             {% endif %}</td>
-                          <td class="text-center"><img src="{{ product.image }}" alt="{{ product.name }}" class="img-thumbnail"/></td>
-                          <td class="text-left">{{ product.name }}
+                          <td class="text-center"><a href="{{ product.view }}" target="_blank" data-toggle="tooltip" title="{{ button_view }}">
+                          <img src="{{ product.image }}" alt="{{ product.name }}" class="img-thumbnail"/>
+                          </a></td>
+                          <td class="text-left">
+                              <a href="{{ product.view }}" target="_blank" data-toggle="tooltip" title="{{ button_view }}">
+                              {{ product.name }}
+                              </a>
                             <br/>
-                            {% if product.status %}
+                            {% if product.status_id %}
                               <small class="text-success">{{ text_enabled }}</small>
                             {% else %}
                               <small class="text-danger">{{ text_disabled }}</small>
@@ -116,6 +122,9 @@
                             {% else %}
                               <span class="badge badge-success">{{ product.quantity }}</span>
                             {% endif %}</td>
+                          <td class="text-left">
+                            <input type="checkbox" name="product-status-toggle" data-id="{{ product.product_id }}" {{ product.status_id ? 'checked' : '' }}>
+                          </td>
                           <td class="text-right">
                             {% if product.variant %}
                               <div class="btn-group">
@@ -229,6 +238,36 @@ $('input[name=\'filter_model\']').autocomplete({
 	'select': function(item) {
 		$('input[name=\'filter_model\']').val(item['label']);
 	}
+});
+
+
+//[admpub]----\
+$("[name='product-status-toggle']").bootstrapSwitch({
+  onText: '{{ text_enabled }}',
+  offText: '{{ text_disabled }}',
+  labelText: '{{ entry_status }}',
+  size: 'mini',
+});
+
+$('input[name="product-status-toggle"]').on('switchChange.bootstrapSwitch', function(event, state) {
+  var switcher = $(this);
+  $.ajax({
+    url: 'index.php?route=catalog/product/status&user_token={{ user_token }}&product_id=' + $(this).data('id') + '&status=' + (state ? 1 : 0),
+    dataType: 'json',
+    beforeSend: function () {
+      switcher.bootstrapSwitch('toggleReadonly', true);
+    },
+    success: function (json) {
+      switcher.bootstrapSwitch('toggleReadonly', false);
+      if (json['status'] !== 1) {
+        switcher.bootstrapSwitch('state', !state, true);
+      }
+    },
+    error: function () {
+      switcher.bootstrapSwitch('toggleReadonly', false);
+      switcher.bootstrapSwitch('state', !state, true);
+    }
+  });
 });
 //--></script>
 {{ footer }}

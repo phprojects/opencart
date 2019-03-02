@@ -1,6 +1,8 @@
 <?php
 // Registry
-$registry = new Registry();
+//$registry = new Registry();
+// [admpub]
+$registry = Registry::getSingleton();
 
 // Config
 $config = new Config();
@@ -130,6 +132,11 @@ $registry->set('cache', new Cache($config->get('cache_engine'), $config->get('ca
 // Url
 if ($config->get('url_autostart')) {
 	$registry->set('url', new Url($config->get('site_url')));
+}
+
+// [admpub]
+if (is_admin()) {
+    $registry->set('front_url', new Url(HTTP_CATALOG));
 }
 
 // Language

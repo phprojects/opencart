@@ -1,22 +1,29 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2016-10-22 09:12:56
+ * @modified         2016-11-05 17:35:24
+ */
 
 // Heading
-$_['heading_title']    = '退换原因';
+$_['heading_title']    = '退货原因';
 
 // Text
-$_['text_success']     = '成功: 已修改退换原因！';
-$_['text_list']        = '退换原因列表';
-$_['text_add']         = '添加退换原因';
-$_['text_edit']        = '编辑退换原因';
+$_['text_success']     = '成功：退货原因已修改！';
+$_['text_list']        = '退货原因列表';
+$_['text_add']         = '添加退货原因';
+$_['text_edit']        = '编辑退货原因';
 
 // Column
-$_['column_name']      = '退换原因名称';
-$_['column_action']    = '操作';
+$_['column_name']      = '退货原因名称';
+$_['column_action']    = '管理';
 
 // Entry
-$_['entry_name']       = '退换原因名称';
+$_['entry_name']       = '退货原因名称';
 
 // Error
-$_['error_permission'] = '警告: 无权限修改退换原因！';
-$_['error_name']       = '退换原因名称必须为3-128字符！';
-$_['error_return']     = '警告: 不能删除此退换原因，该退换原因已被关联到 %s 个退换商品！';
+$_['error_permission'] = '错误：您没有权限修改退货原因！';
+$_['error_name']       = '退货原因名必须在 3 至 128 个字符之间！';
+$_['error_return']     = '错误：该退货原因不能删除，%s 退货商品正在使用！';

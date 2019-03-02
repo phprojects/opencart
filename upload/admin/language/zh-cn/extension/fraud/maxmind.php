@@ -1,69 +1,76 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2017-10-05 09:40:20
+ * @modified         2017-10-07 11:45:05
+ */
+
 // Heading
-$_['heading_title']                           = 'MaxMind Anti-Fraud';
+$_['heading_title']                           = 'MaxMind 反欺诈';
 
 // Text
-$_['text_extension']   = '扩展功能';
-$_['text_fraud']                              = 'Anti-Fraud';
-$_['text_success']                            = 'Success: You have modified MaxMind anti-fraud!';
-$_['text_edit']                               = 'Edit MaxMind Anti-Fraud';
-$_['text_signup']                             = 'MaxMind is a fraud detection service. If you don\'t have a license key you can <a href="http://www.maxmind.com/?rId=opencart" target="_blank"><u>sign up here</u></a>.';
-$_['text_country_match']                      = 'Country Match:';
-$_['text_country_code']                       = 'Country Code:';
-$_['text_high_risk_country']                  = 'High Risk Country:';
-$_['text_distance']                           = 'Distance:';
-$_['text_ip_region']                          = 'IP Region:';
-$_['text_ip_city']                            = 'IP City:';
-$_['text_ip_latitude']                        = 'IP Latitude:';
-$_['text_ip_longitude']                       = 'IP Longitude:';
-$_['text_ip_isp']                             = 'ISP:';
-$_['text_ip_org']                             = 'IP Organization:';
-$_['text_ip_asnum']                           = 'ASNUM:';
-$_['text_ip_user_type']                       = 'IP User Type:';
-$_['text_ip_country_confidence']              = 'IP Country Confidence:';
-$_['text_ip_region_confidence']               = 'IP Region Confidence:';
-$_['text_ip_city_confidence']                 = 'IP City Confidence:';
-$_['text_ip_postal_confidence']               = 'IP Postal Confidence:';
-$_['text_ip_postal_code']                     = 'IP Postal Code:';
-$_['text_ip_accuracy_radius']                 = 'IP Accuracy Radius:';
-$_['text_ip_net_speed_cell']                  = 'IP Net Speed Cell';
-$_['text_ip_metro_code']                      = 'IP Metro Code:';
-$_['text_ip_area_code']                       = 'IP Area Code:';
-$_['text_ip_time_zone']                       = 'IP Time Zone:';
-$_['text_ip_region_name']                     = 'IP Region Name:';
-$_['text_ip_domain']                          = 'IP Domain:';
-$_['text_ip_country_name']                    = 'IP Country Name:';
-$_['text_ip_continent_code']                  = 'IP Continent Code:';
-$_['text_ip_corporate_proxy']                 = 'IP Corporate Proxy:';
-$_['text_anonymous_proxy']                    = 'Anonymous Proxy:';
-$_['text_proxy_score']                        = 'Proxy Score:';
-$_['text_is_trans_proxy']                     = 'Is Transparent Proxy:';
-$_['text_free_mail']                          = 'Free Mail:';
-$_['text_carder_email']                       = 'Carder Email:';
-$_['text_high_risk_username']                 = 'High Risk Username:';
-$_['text_high_risk_password']                 = 'High Risk Password:';
-$_['text_bin_match']                          = 'Bin Match:';
-$_['text_bin_country']                        = 'Bin Country:';
-$_['text_bin_name_match']                     = 'Bin Name Match:';
-$_['text_bin_name']                           = 'Bin Name:';
-$_['text_bin_phone_match']                    = 'Bin Phone Match:';
-$_['text_bin_phone']                          = 'Bin Phone:';
-$_['text_customer_phone_in_billing_location'] = 'Customer Phone Number in Billing Location:';
-$_['text_ship_forward']                       = 'Shipping Forward:';
-$_['text_city_postal_match']                  = 'City Postal Match:';
-$_['text_ship_city_postal_match']             = 'Shipping City Postal Match:';
-$_['text_score']                              = 'Score:';
-$_['text_explanation']                        = 'Explanation:';
-$_['text_risk_score']                         = 'Risk Score:';
-$_['text_queries_remaining']                  = 'Queries Remaining:';
-$_['text_maxmind_id']                         = 'Maxmind ID:';
-$_['text_error']                              = 'Error:';
+$_['text_extension']                          = '扩展';
+$_['text_success']                            = '成功：您已经修改了高敏反欺诈！';
+$_['text_edit']                               = '编辑高敏反欺诈';
+$_['text_signup']                             = '高灵是一种欺诈检测服务。如果你没有一个许可证密钥你可以 <a href="http://www.maxmind.com/?rId=opencart" target="_blank"><u>在这里注册</u></a>.';
+$_['text_country_match']                      = '国家对比';
+$_['text_country_code']                       = '国家代码';
+$_['text_high_risk_country']                  = '高危国家';
+$_['text_distance']                           = '距离';
+$_['text_ip_region']                          = 'IP 地区';
+$_['text_ip_city']                            = 'IP 城市';
+$_['text_ip_latitude']                        = 'IP 维度';
+$_['text_ip_longitude']                       = 'IP 经度';
+$_['text_ip_isp']                             = 'ISP';
+$_['text_ip_org']                             = 'IP 组织';
+$_['text_ip_asnum']                           = 'ASNUM';
+$_['text_ip_user_type']                       = 'IP 用户类型';
+$_['text_ip_country_confidence']              = 'IP 国家信用';
+$_['text_ip_region_confidence']               = 'IP 地区信用';
+$_['text_ip_city_confidence']                 = 'IP 城市信用';
+$_['text_ip_postal_confidence']               = 'IP 邮政信用';
+$_['text_ip_postal_code']                     = 'IP 邮政编码';
+$_['text_ip_accuracy_radius']                 = 'IP 精度半径';
+$_['text_ip_net_speed_cell']                  = 'IP 网速单元';
+$_['text_ip_metro_code']                      = 'IP 地铁代码';
+$_['text_ip_area_code']                       = 'IP 地区代码';
+$_['text_ip_time_zone']                       = 'IP 时区';
+$_['text_ip_region_name']                     = 'IP 地域名称';
+$_['text_ip_domain']                          = 'IP 域';
+$_['text_ip_country_name']                    = 'IP 国家名称';
+$_['text_ip_continent_code']                  = 'IP 大陆代码';
+$_['text_ip_corporate_proxy']                 = 'IP 公司代理: ';
+$_['text_anonymous_proxy']                    = '匿名代理';
+$_['text_proxy_score']                        = '代理评分';
+$_['text_is_trans_proxy']                     = '透明代理';
+$_['text_free_mail']                          = '免费邮件';
+$_['text_carder_email']                       = '主要邮件';
+$_['text_high_risk_username']                 = '高风险用户名称';
+$_['text_high_risk_password']                 = '高风险密码';
+$_['text_bin_match']                          = 'Bin 对比';
+$_['text_bin_country']                        = 'Bin 国家';
+$_['text_bin_name_match']                     = 'Bin 名称比较';
+$_['text_bin_name']                           = 'Bin 名称';
+$_['text_bin_phone_match']                    = 'Bin 电话比较';
+$_['text_bin_phone']                          = 'Bin 电话';
+$_['text_customer_phone_in_billing_location'] = '客户电话号码在帐单位置';
+$_['text_ship_forward']                       = '装运前';
+$_['text_city_postal_match']                  = '城市邮政匹配';
+$_['text_ship_city_postal_match']             = '航运城市邮政匹配';
+$_['text_score']                              = '分数';
+$_['text_explanation']                        = '说明';
+$_['text_risk_score']                         = '风险评分';
+$_['text_queries_remaining']                  = '剩余查询';
+$_['text_maxmind_id']                         = '高敏 ID';
+$_['text_error']                              = '错误';
 
 // Entry
-$_['entry_key']                               = 'MaxMind License Key';
-$_['entry_score']                             = 'Risk Score';
-$_['entry_order_status']                      = 'Order Status';
-$_['entry_status']                            = 'Status';
+$_['entry_key']                               = '高敏许可证 License Key';
+$_['entry_score']                             = '风险评分';
+$_['entry_order_status']                      = '订单状态';
+$_['entry_status']                            = '状态';
 
 // Help
 $_['help_order_status']                       = 'Orders that have a score over your set risk score will be assigned this order status and will not be allowed to reach the complete status automatically.';
@@ -119,5 +126,5 @@ $_['help_maxmind_id']                         = 'Unique identifier, used to refe
 $_['help_error']                              = 'Returns an error string with a warning message or a reason why the request failed.';
 
 // Error
-$_['error_permission']                        = 'Warning: You do not have permission to modify MaxMind anti-fraud!';
-$_['error_key']		                          = 'License Key Required!';
+$_['error_permission']                        = '警告：您没有权限修改高敏反欺诈！';
+$_['error_key']		                      = '许可证密钥！';

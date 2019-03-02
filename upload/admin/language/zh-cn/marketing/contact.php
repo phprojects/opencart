@@ -1,36 +1,44 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2016-10-22 09:12:56
+ * @modified         2016-11-05 17:35:25
+ */
+
 // Heading
-$_['heading_title']        = '邮件通知会员';
+$_['heading_title']        = '邮件群发';
 
 // Text
-$_['text_success']         = '您的邮件已成功发送!';
-$_['text_sent']            = '您的邮件已成功发送 %s 封，共 %s 收件人！';
-$_['text_list']            = '邮件推广列表';
+$_['text_success']         = '您的邮件已成功发送！';
+$_['text_sent']            = '您的邮件已成功发送给 %s / %s 个地址！';
+$_['text_list']            = '邮件列表';
 $_['text_default']         = '默认';
-$_['text_newsletter']      = '所有资讯订阅者';
-$_['text_customer_all']    = '所有会员';
-$_['text_customer_group']  = '会员等级';
-$_['text_customer']        = '会员';
-$_['text_affiliate_all']   = '所有推广会员';
-$_['text_affiliate']       = '推广会员';
+$_['text_newsletter']      = '所有订阅用户';
+$_['text_customer_all']    = '所有客户';
+$_['text_customer_group']  = '客户组';
+$_['text_customer']        = '客户';
+$_['text_affiliate_all']   = '所有联盟用户';
+$_['text_affiliate']       = '联盟用户';
 $_['text_product']         = '商品';
 
 // Entry
-$_['entry_store']          = '来自于';
+$_['entry_store']          = '发信人';
 $_['entry_to']             = '发送至';
-$_['entry_customer_group'] = '会员等级';
-$_['entry_customer']       = '会员';
-$_['entry_affiliate']      = '推广会员';
+$_['entry_customer_group'] = '客户组';
+$_['entry_customer']       = '客户';
+$_['entry_affiliate']      = '联盟用户';
 $_['entry_product']        = '商品';
-$_['entry_subject']        = '邮件标题';
-$_['entry_message']        = '邮件内容';
+$_['entry_subject']        = '主题';
+$_['entry_message']        = '内容';
 
 // Help
-$_['help_customer']        = '输入时自动筛选结果';
-$_['help_affiliate']       = '输入时自动筛选结果';
-$_['help_product']         = '仅发送给购买了下面列表中商品的会员。 (输入时自动筛选结果)';
+$_['help_customer']       = '自动完成';
+$_['help_affiliate']      = '自动完成';
+$_['help_product']        = '只发送给购买过下列商品的客户。（自动完成）';
 
 // Error
-$_['error_permission']     = '警告: 无权限发送邮件！';
-$_['error_subject']        = '邮件标题必填！';
-$_['error_message']        = '邮件内容必填！';
+$_['error_permission']     = '错误：您没有权限发送E-mail！';
+$_['error_subject']        = 'E-Mail主题必填！';
+$_['error_message']        = 'E-Mail内容必填！';

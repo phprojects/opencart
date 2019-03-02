@@ -33,4 +33,9 @@ abstract class Controller {
 	public function __set($key, $value) {
 		$this->registry->set($key, $value);
 	}
+
+	public function json($json = null) {
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+	}
 }

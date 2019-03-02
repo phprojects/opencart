@@ -1,10 +1,18 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2016-10-23 11:22:04
+ * @modified         2016-11-05 17:37:17
+ */
+
 // Text
-$_['text_success']     = '成功: 已修改购物车！';
+$_['text_success']     = '成功：购物车商品已修改！';
 
 // Error
-$_['error_permission'] = '警告: 无权限方位该 API 接口！';
-$_['error_stock']      = '标有 *** 的商品为库存少于您所需要的商品数量或库存不足！';
-$_['error_minimum']    = '%s 的最小订单数量为 %s！';
-$_['error_store']      = '无法从所选网店购买商品！';
-$_['error_required']   = '%s 必须！';
+$_['error_permission'] = '警告：您没有权限访问该API！';
+$_['error_stock']      = '商品标有 *** 表示数量不足或没有存货！';
+$_['error_minimum']    = '%s 最小起订量是 %s！';
+$_['error_store']      = '该商品已不能在本店购买！';
+$_['error_required']   = '%s 必选！';

@@ -1,4 +1,12 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2016-10-22 09:12:56
+ * @modified         2016-11-05 17:35:23
+ */
+
 // Heading
 $_['heading_title']					= 'Orders';
 $_['text_openbay']					= 'OpenBay Pro';
@@ -42,6 +50,7 @@ $_['text_type_new'] 				= 'Create';
 $_['text_type_ship'] 				= 'Shipment';
 $_['text_type_cancel'] 				= 'Cancellation';
 $_['text_no_requests'] 				= 'No requests have been made yet!';
+$_['text_order_list']				= 'Amazon order list';
 
 
 // Columns

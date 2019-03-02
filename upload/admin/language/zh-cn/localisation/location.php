@@ -1,39 +1,46 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2016-10-22 09:12:56
+ * @modified         2016-11-05 17:35:24
+ */
 
 // Heading
-$_['heading_title']    = '线下商店';
+$_['heading_title']    = '商店地址';
 
 // Text
-$_['text_success']     = '成功: 已修改线下商店！';
-$_['text_list']        = '线下商店列表';
-$_['text_add']         = '添加线下商店';
-$_['text_edit']        = '编辑线下商店';
+$_['text_success']     = '成功：你已经修改商店地址！';
+$_['text_list']        = '商店地址列表';
+$_['text_add']         = '添加商店地址';
+$_['text_edit']        = '编辑商店地址';
 $_['text_default']     = '默认';
 $_['text_time']        = '营业时间';
-$_['text_geocode']     = 'Geocode 由于下面原因无法成功：';
+$_['text_geocode']     = '地理编码不成功原因如下：';
 
 // Column
-$_['column_name']      = '商店名称';
+$_['column_name']      = '店铺名称';
 $_['column_address']   = '地址';
-$_['column_action']    = '操作';
+$_['column_action']    = '管理';
 
 // Entry
-$_['entry_name']       = '商店名称';
+$_['entry_name']       = '店铺名称';
 $_['entry_address']    = '地址';
-$_['entry_geocode']    = '地理编码(Geocode)';
+$_['entry_geocode']    = '地理编码';
 $_['entry_telephone']  = '电话';
 $_['entry_fax']        = '传真';
-$_['entry_image']      = '图像';
+$_['entry_image']      = '图片';
 $_['entry_open']       = '营业时间';
-$_['entry_comment']    = '备注';
+$_['entry_comment']    = '附言';
 
 // Help
-$_['help_geocode']     = '请手工输入线下商店地理编码geocode。';
-$_['help_open']        = '填写商店营业时间。';
-$_['help_comment']     = '此内容允许您告知顾客一些特殊声明，比如商店不接受支票。';
+$_['help_geocode']     = '请手动输入您商店的地理编码。';
+$_['help_open']        = '网店的营业时间。';
+$_['help_comment']     = '在此输入要告知客户的特殊说明，如：商店不接受支票等。';
 
 // Error
-$_['error_permission'] = '警告: 无权限修改线下商店!';
-$_['error_name']       = '商店名称必须为3-32字符！';
-$_['error_address']    = '地址必须为3-128字符！';
-$_['error_telephone']  = '电话必须3-32字符！';
+$_['error_permission'] = '错误：您没有权限修改商店地址！';
+$_['error_name']       = '商店名称必须至少为 1 个字符！';
+$_['error_address']    = '地址必须在 3 至 128 字符之间！';
+$_['error_telephone']  = '联系电话必须在 3 至 32个字符之间！';

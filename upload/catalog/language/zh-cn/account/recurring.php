@@ -1,52 +1,60 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2016-10-23 11:22:04
+ * @modified         2016-11-05 17:37:17
+ */
+
 // Heading
 $_['heading_title']                        = '分期付款';
 
 // Text
-$_['text_account']                         = '帐户';
-$_['text_recurring']                       = 'Recurring Payment Information';
-$_['text_recurring_detail']                = 'Recurring Payment Details';
-$_['text_order_recurring_id']              = 'Recurring ID:';
-$_['text_date_added']                      = 'Date Added:';
-$_['text_status']                          = 'Status:';
-$_['text_payment_method']                  = 'Payment Method:';
-$_['text_order_id']                        = 'Order ID:';
-$_['text_product']                         = 'Product:';
-$_['text_quantity']                        = 'Quantity:';
-$_['text_description']                     = 'Description';
-$_['text_reference']                       = 'Reference';
-$_['text_transaction']                     = 'Transactions';
-$_['text_status_1']                        = 'Active';
-$_['text_status_2']                        = 'Inactive';
-$_['text_status_3']                        = 'Cancelled';
-$_['text_status_4']                        = 'Suspended';
-$_['text_status_5']                        = 'Expired';
-$_['text_status_6']                        = 'Pending';
-$_['text_transaction_date_added']          = 'Created';
-$_['text_transaction_payment']             = 'Payment';
-$_['text_transaction_outstanding_payment'] = 'Outstanding payment';
-$_['text_transaction_skipped']             = 'Payment skipped';
-$_['text_transaction_failed']              = 'Payment failed';
-$_['text_transaction_cancelled']           = 'Cancelled';
-$_['text_transaction_suspended']           = 'Suspended';
-$_['text_transaction_suspended_failed']    = 'Suspended from failed payment';
-$_['text_transaction_outstanding_failed']  = 'Outstanding payment failed';
-$_['text_transaction_expired']             = 'Expired';
-$_['text_empty']                           = 'No recurring payments found!';
-$_['text_error']                           = 'The recurring order you requested could not be found!';
-$_['text_cancelled']                       = 'Recurring payment has been cancelled';
+$_['text_account']                         = '会员中心';
+$_['text_recurring']                       = '分期付款';
+$_['text_recurring_detail']                = '分期付款详情';
+$_['text_order_recurring_id']              = '分期 ID:';
+$_['text_date_added']                      = '创建:';
+$_['text_status']                          = '状态:';
+$_['text_payment_method']                  = '付款方式:';
+$_['text_order_id']                        = '订单号:';
+$_['text_product']                         = '商品:';
+$_['text_quantity']                        = '数量:';
+$_['text_description']                     = '描述';
+$_['text_reference']                       = '参考';
+$_['text_transaction']                     = '我的余额';
+$_['text_status_1']                        = '正常';
+$_['text_status_2']                        = '无效';
+$_['text_status_3']                        = '取消';
+$_['text_status_4']                        = '暂停';
+$_['text_status_5']                        = '过期';
+$_['text_status_6']                        = '未完成';
+$_['text_transaction_date_added']          = '已创建';
+$_['text_transaction_payment']             = '付款';
+$_['text_transaction_outstanding_payment'] = '拖欠付款';
+$_['text_transaction_skipped']             = '付款间隔';
+$_['text_transaction_failed']              = '付款失败';
+$_['text_transaction_cancelled']           = '取消';
+$_['text_transaction_suspended']           = '暂停';
+$_['text_transaction_suspended_failed']    = '未付款而暂停';
+$_['text_transaction_outstanding_failed']  = '因拖欠付款失败';
+$_['text_transaction_expired']             = '逾期';
+$_['text_empty']                           = '您还没有分期付款的订单！';
+$_['text_error']                           = '没有找到分期付款订单！';
+$_['text_cancelled']                       = '已取消分期付款';
 
 // Column
-$_['column_date_added']                    = 'Date Added';
-$_['column_type']                          = 'Type';
-$_['column_amount']                        = 'Amount';
-$_['column_status']                        = 'Status';
-$_['column_product']                       = 'Product';
-$_['column_order_recurring_id']            = 'Recurring ID';
+$_['column_date_added']                    = '创建';
+$_['column_type']                          = '类型';
+$_['column_amount']                        = '金额';
+$_['column_status']                        = '状态';
+$_['column_product']                       = '商品';
+$_['column_order_recurring_id']            = '分期ID';
 
 // Error
-$_['error_not_cancelled']                  = 'Error: %s';
-$_['error_not_found']                      = 'Could not cancel recurring';
+$_['error_not_cancelled']                  = '错误：%s';
+$_['error_not_found']                      = '无法取消分期';
 
 // Button
-$_['button_return']                        = 'Return';
+$_['button_return']                        = '退货';

@@ -1,15 +1,23 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2016-10-22 09:12:56
+ * @modified         2016-11-05 17:35:23
+ */
+
 // Heading
 $_['heading_title']					 = 'Globalpay Redirect';
 
 // Text
-$_['text_extension']	 = '扩展功能';
+$_['text_extension']				  	 = '扩展';
 $_['text_success']					 = 'Success: You have modified Globalpay account details!';
 $_['text_edit']                      = 'Edit Globalpay Redirect';
 $_['text_live']						 = 'Live';
 $_['text_demo']						 = 'Demo';
 $_['text_card_type']				 = 'Card type';
-$_['text_enabled']					 = '启用';
+$_['text_enabled']					 = 'Enabled';
 $_['text_use_default']				 = 'Use default';
 $_['text_merchant_id']				 = 'Merchant ID';
 $_['text_subaccount']				 = 'Subaccount';

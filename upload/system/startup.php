@@ -100,6 +100,10 @@ require_once(modification(DIR_SYSTEM . 'engine/proxy.php'));
 require_once(DIR_SYSTEM . 'helper/general.php');
 require_once(DIR_SYSTEM . 'helper/utf8.php');
 
+// Helper [admpub]
+require_once(DIR_SYSTEM . 'helper/device.php');
+require_once(DIR_SYSTEM . 'helper/functions.php');
+
 function start($application_config) {
 	require_once(DIR_SYSTEM . 'framework.php');	
 }

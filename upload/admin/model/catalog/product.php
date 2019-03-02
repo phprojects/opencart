@@ -753,4 +753,16 @@ class ModelCatalogProduct extends Model {
 
 		return $query->row['total'];
 	}
+
+	/**
+	 * 设置产品状态
+	 *
+	 * @param integer $product_id
+	 * @param integer $status
+	 * @author [admpub]
+	 * @return void
+	 */
+	public function editProductStatus($product_id, $status) {
+		$this->db->query("UPDATE " . DB_PREFIX . "product SET status = '" . (int)$status . "' WHERE product_id = '" . (int)$product_id . "'");
+	  }
 }

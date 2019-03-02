@@ -1,6 +1,14 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2016-10-22 09:12:56
+ * @modified         2016-11-05 17:35:25
+ */
+
 // Text
-$_['text_subject']  = '%s - Password reset request';
-$_['text_greeting'] = 'A new password was requested for %s administration.';
-$_['text_change']   = 'To reset your password click on the link below:';
-$_['text_ip']       = 'The IP used to make this request was:';
+$_['text_subject']  = '%s - 密码重置请求';
+$_['text_greeting'] = '管理员 %s 请求了新密码。';
+$_['text_change']   = '请点击以下链接重设密码：';
+$_['text_ip']       = '请求 IP 地址：%s';

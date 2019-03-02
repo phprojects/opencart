@@ -1,30 +1,38 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2016-10-22 09:12:56
+ * @modified         2016-11-05 17:35:24
+ */
+
 // Heading
-$_['heading_title']    = '尺寸';
+$_['heading_title']    = '长度单位';
 
 // Text
-$_['text_success']     = '成功: 已修尺寸！';
-$_['text_list']        = '尺寸列表';
-$_['text_add']         = '添加尺寸';
-$_['text_edit']        = '编辑尺寸';
+$_['text_success']     = '成功：长度单位已修改！';
+$_['text_list']        = '长度单位列表';
+$_['text_add']         = '添加长度单位';
+$_['text_edit']        = '编辑长度单位';
 
 // Column
-$_['column_title']     = '尺寸标题';
-$_['column_unit']      = '尺寸单位';
+$_['column_title']     = '长度标题';
+$_['column_unit']      = '长度单位';
 $_['column_value']     = '值';
-$_['column_action']    = '操作';
+$_['column_action']    = '管理';
 
 // Entry
-$_['entry_title']      = '尺寸标题';
-$_['entry_unit']       = '尺寸单位';
+$_['entry_title']      = '长度标题';
+$_['entry_unit']       = '长度单位';
 $_['entry_value']      = '值';
 
 // Help
-$_['help_value']       = '如果为默认尺寸，请设置为 1.00000。';
+$_['help_value']       = '此长度单位为网站默认长度单位时，请输入 1.00000。';
 
 // Error
-$_['error_permission'] = '警告: 无权限修改尺寸！';
-$_['error_title']      = '尺寸标题必须介于3-32字符之间！';
-$_['error_unit']       = '尺寸单位必须介于1-4字符之间！';
-$_['error_default']    = '警告: 不能删除此尺寸，该尺寸已经关联为商店默认尺寸！';
-$_['error_product']    = '警告: 不能删除此尺寸，该尺寸已经关联到 %s 个商品！';
+$_['error_permission'] = '错误：您没有权限修改长度单位！';
+$_['error_title']      = '长度标题必须在 3 至 32个字符之间！';
+$_['error_unit']       = '长度单位长度必须在 1 至 4个字符之间！';
+$_['error_default']    = '错误：该长度为商店的默认长度，因此无法删除！';
+$_['error_product']    = '错误：该长度单位不能删除，%s 商品正在使用！';

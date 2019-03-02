@@ -1,29 +1,37 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2016-10-22 09:12:56
+ * @modified         2016-11-05 17:35:25
+ */
+
 // Heading
-$_['heading_title']         = '会员奖励积分报告';
+$_['heading_title']         = '奖励积分报表';
 
 // Text
-$_['text_extension']        = '扩展功能';
-$_['text_edit']             = '编辑会员奖励积分报告';
-$_['text_success']          = '成功: 已修改会员奖励积分报告！';
+$_['text_extension']        = '扩展';
+$_['text_edit']             = '编辑';
+$_['text_success']          = '成功：奖励积分报表已修改！';
 $_['text_filter']           = '筛选';
 
 // Column
-$_['column_customer']       = '会员姓名';
+$_['column_customer']       = '客户名称';
 $_['column_email']          = 'E-Mail';
-$_['column_customer_group'] = '会员等级';
+$_['column_customer_group'] = '用户组';
 $_['column_status']         = '状态';
 $_['column_points']         = '奖励积分';
-$_['column_orders']         = '订单数量';
-$_['column_total']          = '总计';
-$_['column_action']         = '操作';
+$_['column_orders']         = '订单号';
+$_['column_total']          = '金额总计';
+$_['column_action']         = '管理';
 
 // Entry
 $_['entry_date_start']      = '开始日期';
 $_['entry_date_end']        = '结束日期';
-$_['entry_customer']		= '会员';
+$_['entry_customer']        = '客户';
 $_['entry_status']          = '状态';
 $_['entry_sort_order']      = '排序';
 
 // Error
-$_['error_permission']  	= '警告: 无权限修改会员奖励积分报告！';
+$_['error_permission']  = '错误：您没有权限修改奖励积分报表！';

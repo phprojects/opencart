@@ -1,4 +1,12 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2016-10-22 09:12:56
+ * @modified         2016-11-05 17:35:23
+ */
+
 // Heading
 $_['heading_title']                 = 'Lay-Buy';
 $_['heading_transaction_title']     = 'Transaction';
@@ -12,8 +20,7 @@ $_['tab_payment']                   = 'Payment Plan';
 $_['tab_modify']                    = 'Modify Plan';
 
 // Text
-$_['text_extension']   = '扩展功能';
-$_['text_payment']                  = 'Payment';
+$_['text_extension']                = '扩展';
 $_['text_success']                  = 'Success: You have modified Lay-Buy payment module!';
 $_['text_edit']                     = 'Edit Lay-Buy';
 $_['text_laybuy']                   = '<a href="https://www.lay-buys.com" target="_blank"><img src="view/image/payment/laybuys.png" style="width:94px;height:25px" alt="Lay-Buys" title="Lay-Buys"></a>';
@@ -53,7 +60,8 @@ $_['text_revise_plan']              = 'Revise Plan';
 $_['text_today']                    = 'Today';
 $_['text_due_date']                 = 'Due Date';
 $_['text_cancel_plan']              = 'Cancel Plan';
-$_['text_fullname']                = 'Full Name';
+$_['text_firstname']                = 'First Name';
+$_['text_lastname']                 = 'Last Name';
 $_['text_email']                    = 'E-Mail';
 $_['text_address']                  = 'Address';
 $_['text_suburb']                   = 'Suburb';
@@ -65,6 +73,7 @@ $_['text_no_cron_time']             = 'The cron has not yet been executed';
 $_['text_comment'] 	                = 'Updated by Lay-Buy';
 $_['text_comment_canceled'] 	    = 'Order canceled and recurring PayPal Profile #%s canceled.';
 $_['text_remaining'] 	            = 'Remaining:';
+$_['text_payment'] 	                = 'Payment';
 
 // Column
 $_['column_order_id']               = 'Order ID';

@@ -1,26 +1,34 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2017-10-05 09:40:20
+ * @modified         2017-10-07 11:45:05
+ */
+
 // Heading
-$_['heading_title']            = 'Lay-Buy 分期缴款信息';
+$_['heading_title']            = 'Lay-Buy Information';
 
 // Text
-$_['text_reference_info']      = '参数资料';
-$_['text_laybuy_ref_no']       = 'Lay-Buy ID:';
-$_['text_paypal_profile_id']   = 'PayPal ID:';
-$_['text_payment_plan']        = '支付计划';
-$_['text_status']              = '状态:';
-$_['text_amount']              = '金额';
-$_['text_downpayment_percent'] = '缴款比例:';
-$_['text_months']              = '月数： ';
-$_['text_downpayment_amount']  = '缴款金额:';
-$_['text_payment_amounts']     = '支付金额:';
-$_['text_first_payment_due']   = '第一次支付日期:';
-$_['text_last_payment_due']    = '最后一次支付日期:';
-$_['text_downpayment']         = '缴款';
-$_['text_month']               = '月';
+$_['text_reference_info']      = 'Reference Information';
+$_['text_laybuy_ref_no']       = 'Lay-Buy Reference ID:';
+$_['text_paypal_profile_id']   = 'PayPal Profile ID:';
+$_['text_payment_plan']        = 'Payment Plan';
+$_['text_status']              = 'Status:';
+$_['text_amount']              = 'Amount:';
+$_['text_downpayment_percent'] = 'Down Payment Percent:';
+$_['text_months']              = 'Months:';
+$_['text_downpayment_amount']  = 'Down Payment Amount:';
+$_['text_payment_amounts']     = 'Payment Amounts:';
+$_['text_first_payment_due']   = 'First Payment Due:';
+$_['text_last_payment_due']    = 'Last Payment Due:';
+$_['text_downpayment']         = 'Down Payment';
+$_['text_month']               = 'Month';
 
 // Column
-$_['column_instalment']        = '分期';
-$_['column_amount']            = '金额';
-$_['column_date']              = '日期';
-$_['column_pp_trans_id']       = 'PayPal 交易 ID';
-$_['column_status']            = '状态';
+$_['column_instalment']        = 'Instalment';
+$_['column_amount']            = 'Amount';
+$_['column_date']              = 'Date';
+$_['column_pp_trans_id']       = 'PayPal Transaction ID';
+$_['column_status']            = 'Status';

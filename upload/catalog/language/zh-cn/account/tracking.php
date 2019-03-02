@@ -1,15 +1,23 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2017-10-05 09:40:20
+ * @modified         2017-10-07 11:45:05
+ */
+
 // Heading
 $_['heading_title']    = '推广跟踪';
 
 // Text
-$_['text_account']     = '帐户';
-$_['text_description'] = '如要确保从你推荐的会员中获取佣金，您需要将跟踪码放到分享的网站链接里面。您可以利用如下的工具生成网站 %s 的链接。';
+$_['text_account']     = '账号';
+$_['text_description'] = '要获得推广佣金，我们需要在你分享出去的链接后面加上跟踪代码。请使用以下工具生成 %s 网站的跟踪链接。';
 
 // Entry
-$_['entry_code']       = '您的跟踪码';
-$_['entry_generator']  = '跟踪链接生成器';
+$_['entry_code']       = '你的跟踪码';
+$_['entry_generator']  = '跟踪码生成器';
 $_['entry_link']       = '跟踪链接';
 
 // Help
-$_['help_generator']  = '输入你想生成的链接的商品名称';
+$_['help_generator']  = '输入要分享的商品名称';

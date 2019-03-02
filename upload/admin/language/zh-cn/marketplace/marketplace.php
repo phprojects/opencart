@@ -1,48 +1,59 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2017-10-05 09:40:20
+ * @modified         2017-10-07 11:45:05
+ */
+
 // Heading
-$_['heading_title']      = '扩展功能商城';
+$_['heading_title']      = '插件市场';
 
 // Text
-$_['text_success']       = '成功: 已修改扩展功能!';
-$_['text_list']          = '扩展功能列表';
+$_['text_success']       = '成功：插件已修改！';
+$_['text_list']          = '插件列表';
 $_['text_filter']        = '筛选';
-$_['text_search']        = '搜寻扩展功能及模板主题';
+$_['text_search']        = '搜索插件和主题';
 $_['text_category']      = '分类';
 $_['text_all']           = '所有';
-$_['text_theme']         = '模板主题';
-$_['text_marketplace']   = '商城市场';
-$_['text_language']      = '语言';
+$_['text_theme']         = '主题模板';
+$_['text_marketplace']   = '插件市场';
+$_['text_language']      = '语言翻译';
 $_['text_payment']       = '支付方式';
 $_['text_shipping']      = '配送方式';
-$_['text_module']        = '模组';
-$_['text_total']         = '订单项目';
-$_['text_feed']          = 'Feeds';
-$_['text_report']        = '报告';
-$_['text_other']         = '其他';
+$_['text_module']        = '功能模块';
+$_['text_total']         = '订单费用';
+$_['text_feed']          = '商品管理';
+$_['text_report']        = '报表分析';
+$_['text_other']         = '其它功能';
 $_['text_free']          = '免费';
-$_['text_paid']          = '已支付';
+$_['text_paid']          = '收费';
 $_['text_purchased']     = '已购买';
 $_['text_date_modified'] = '修改日期';
 $_['text_date_added']    = '添加日期';
-$_['text_name']          = '名称';
 $_['text_rating']        = '评级';
-$_['text_reviews']       = '评论';
+$_['text_reviews']       = '评价';
 $_['text_compatibility'] = '兼容性';
-$_['text_downloaded']    = '已下载';
+$_['text_downloaded']    = '下载';
+$_['text_member_since']  = '注册自：';
 $_['text_price']         = '价格';
-$_['text_partner']       = '由 OpenCart 合作者开发';
+$_['text_partner']       = '由 OpenCart 合作伙伴开发';
 $_['text_support']       = '12 个月免费支持';
 $_['text_documentation'] = '包含文档';
-$_['text_sales']         = '促销';
-$_['text_comment']       = '评论';
+$_['text_sales']         = '销售';
+$_['text_comment']       = '评价';
 $_['text_download']      = '下载中';
 $_['text_install']       = '安装中';
-$_['text_comment']       = '评论';
-$_['text_comment_add']   = '发表评论';
-$_['text_write']         = '此处填写评论';
+$_['text_comment_add']   = '请输入您的评价';
+$_['text_write']         = '输入评价内容...';
 $_['text_purchase']      = '请确认您的身份！';
-$_['text_pin']           = '请输入 4 位 PIN 数字，该数字保护您的帐户。';
-$_['text_secure']        = '不要将您的　PIN　给任何人，包含开发者。如果你希望插件销售者为您安装该插件，您可以发邮件给该插件作者。';
+$_['text_pin']           = '请输入 4 位数的 PIN 码，用于保护您的账户。';
+$_['text_secure']        = '请勿将您的 PIN 码透露给其他人。如果您需要插件开发者为你安装插件，请直接邮件联系开发者。';
+$_['text_name']          = '下载名称';
+$_['text_progress']      = '进度';
+$_['text_available']     = '可用安装';
+$_['text_action']        = '管理';
 
 // Entry
 $_['entry_pin']          = 'PIN';
@@ -54,14 +65,17 @@ $_['tab_download']       = '下载';
 $_['tab_comment']        = '评论';
 
 // Button
-$_['button_opencart']    = '商城 API';
+$_['button_opencart']    = '市场 API';
 $_['button_purchase']    = '购买';
-$_['button_comment']     = '评论';
+$_['button_view_all']    = '浏览所有插件';
+$_['button_get_support'] = '技术支持';
+$_['button_comment']     = '留言';
 $_['button_reply']       = '回复';
+$_['button_forgot_pin']  = '忘记 PIN?';
 
 // Error
-$_['error_permission']   = '警告: 无权限修改扩展功能！';
-$_['error_opencart']     = '警告: 需要输入 OpenCart API 信息以进行购买操作！';
-$_['error_install']      = '正在安装扩展功能中，请耐心等待。!';
-$_['error_purchase']     = '无法购买扩展功能!';
-$_['error_download']     = '无法下载扩展功能!';
+$_['error_permission']   = '错误：您没有权限修改插件！';
+$_['error_opencart']     = '错误：购买插件前请先完善您的 OpenCart API 信息。';
+$_['error_install']      = '有插件正在安装中，请稍候再试。';
+$_['error_purchase']     = '插件暂时无法购买！';
+$_['error_download']     = '插件暂时无法下载';

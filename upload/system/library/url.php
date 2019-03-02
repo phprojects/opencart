@@ -46,8 +46,17 @@ class Url {
 	 *
 	 * @return string
 	 */
-	public function link($route, $args = '') {
+	public function link($route, $args = '', $auto_admin_token = true) {
 		$url = $this->url . 'index.php?route=' . (string)$route;
+
+        // [admpub] Add user_token to admin link if it's not passed in
+        if ($auto_admin_token && is_admin() && !empty(session()->data['user_token'])) {
+            if (is_array($args)) {
+                if(!array_key_exists('user_token', $args)) $args['user_token'] = session()->data['user_token'];
+            } else if (!str_contains($args, 'user_token')) {
+                $args .= '&user_token=' . session()->data['user_token'];
+            }
+        }
 
 		if ($args) {
 			if (is_array($args)) {

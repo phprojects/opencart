@@ -1,11 +1,19 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2016-10-22 09:12:56
+ * @modified         2016-11-05 17:35:24
+ */
+
 $_['heading_title']                              = 'Secure Trading Web Service';
 
 $_['tab_settings']                               = 'Settings';
 $_['tab_myst']                                   = 'MyST';
 
-$_['text_extension']   = '扩展功能';
 $_['text_securetrading_ws']                      = '<a href="http://www.securetradingfs.com/partner/open-cart/" target="_blank"><img src="view/image/payment/secure_trading.png" alt="Secure Trading" title="Secure Trading" style="border: 1px solid #EEEEEE;" /></a>';
+$_['text_extension']                             = '扩展';
 $_['text_all_geo_zones']                         = 'All Geo Zones';
 $_['text_process_immediately']                   = 'Process immediately';
 $_['text_wait_x_days']                           = 'Wait %d days';
@@ -56,6 +64,7 @@ $_['entry_order_status']                         = 'Order status';
 $_['entry_failed_order_status']                  = 'Failed order status';
 $_['entry_declined_order_status']                = 'Declined order status';
 $_['entry_refunded_order_status']                = 'Refunded order status';
+
 $_['entry_authorisation_reversed_order_status']  = 'Authorisation reversed order status';
 $_['entry_settle_status']                        = 'Settlement status';
 $_['entry_settle_due_date']                      = 'Settlement due date';

@@ -229,6 +229,10 @@ class ControllerCatalogProduct extends Controller {
 	}
 
 	protected function getList() {
+		//[admpub]
+		$this->document->addStyle('view/stylesheet/switch.css');
+		$this->document->addScript('view/javascript/jquery/switch/bootstrap-switch.min.js');
+
 		if (isset($this->request->get['filter_name'])) {
 			$filter_name = $this->request->get['filter_name'];
 		} else {
@@ -376,7 +380,11 @@ class ControllerCatalogProduct extends Controller {
 				'quantity'   => $result['quantity'],
 				'status'     => $result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled'),
 				'edit'       => $this->url->link('catalog/product/edit', 'user_token=' . $this->session->data['user_token'] . '&product_id=' . $result['product_id'] . ($result['master_id'] ? '&master_id=' . $result['master_id'] : ''). $url),
-				'variant'    => (!$result['master_id'] ? $this->url->link('catalog/product/add', 'user_token=' . $this->session->data['user_token'] . '&master_id=' . $result['master_id'] . $url) : '')
+				'variant'    => (!$result['master_id'] ? $this->url->link('catalog/product/add', 'user_token=' . $this->session->data['user_token'] . '&master_id=' . $result['product_id'] . $url) : '')
+
+				//[admpub]
+				,'view'       => $this->front_url->link('product/product', 'product_id='.$result['product_id']),
+				'status_id'   => $result['status'],
 			);
 		}
 
@@ -439,6 +447,9 @@ class ControllerCatalogProduct extends Controller {
 		$data['sort_price'] = $this->url->link('catalog/product', 'user_token=' . $this->session->data['user_token'] . '&sort=p.price' . $url);
 		$data['sort_quantity'] = $this->url->link('catalog/product', 'user_token=' . $this->session->data['user_token'] . '&sort=p.quantity' . $url);
 		$data['sort_order'] = $this->url->link('catalog/product', 'user_token=' . $this->session->data['user_token'] . '&sort=p.sort_order' . $url);
+
+		//[admpub]
+		$data['sort_status'] = $this->url->link('catalog/product', 'user_token=' . $this->session->data['user_token'] . '&sort=p.status' . $url);
 
 		$url = '';
 
@@ -1579,5 +1590,57 @@ class ControllerCatalogProduct extends Controller {
 
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
+	}
+
+	/**
+	 * 上下架
+	 *
+	 * @return void
+	 * @author [admpub]
+	 */
+	public function status() {
+		$json = array();
+		if (!$this->permission()) {
+			$json['status'] = 0;
+			$json['message'] = $this->language->get('error_permission');
+			$json['data'] = null;
+
+			$this->json($json);
+			return;
+		}
+
+		if (!isset($this->request->get['product_id']) || (int)$this->request->get['product_id'] < 1) {
+			$json['status'] = 0;
+			$json['message'] = 'Missing: product_id';
+			$json['data'] = null;
+
+			$this->json($json);
+			return;
+		}
+
+		if (!isset($this->request->get['status'])) {
+			$json['status'] = 0;
+			$json['message'] = 'Missing: status';
+			$json['data'] = null;
+
+			$this->json($json);
+			return;
+		}
+
+		$product_id = (int)$this->request->get['product_id'];
+		$status = (int)$this->request->get['status'] > 0 ? 1 : 0;
+
+		$this->load->model('catalog/product');
+		$this->model_catalog_product->editProductStatus($product_id, $status);
+
+		$json['status'] = 1;
+		$json['message'] = 'Done.';
+		$json['data'] = null;
+
+		$this->json($json);
+	}
+
+	protected function permission() {
+		return $this->user->hasPermission('modify', 'catalog/product');
 	}
 }
