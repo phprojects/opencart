@@ -4,7 +4,7 @@ $_['heading_title']     = '评论';
 
 // Text
 $_['text_success']      = '成功: 已经修改评论！';
-$_['text_list']         = '评论列表 - (在线教程: <a href="http://www.mycncart.com/blog-131.html" target="_blank">http://www.mycncart.com/blog-131.html</a>)';
+$_['text_list']         = '评论列表';
 $_['text_add']          = '添加评论';
 $_['text_edit']         = '编辑';
 $_['text_filter']       = '筛选';

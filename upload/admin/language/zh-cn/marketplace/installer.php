@@ -4,7 +4,7 @@ $_['heading_title']     = '安装扩展功能';
 
 // Text
 $_['text_progress']     = '安装进度';
-$_['text_upload']       = '上传扩展功能 - (在线教程: <a href="http://www.mycncart.com/blog-102.html" target="_blank">http://www.mycncart.com/blog-102.html</a>)';
+$_['text_upload']       = '上传扩展功能';
 $_['text_history']      = '安装历史记录';
 $_['text_success']      = '成功: 已安装扩展功能！';
 $_['text_install']      = '安装中';

@@ -5,7 +5,7 @@ $_['heading_title']    = '退换操作';
 
 // Text
 $_['text_success']     = '成功: 已修改退换操作！';
-$_['text_list']        = '退换操作列表 - (在线教程: <a href="http://www.mycncart.com/blog-82.html" target="_blank">http://www.mycncart.com/blog-82.html</a>)';
+$_['text_list']        = '退换操作列表';
 $_['text_add']         = '添加退换操作';
 $_['text_edit']        = '编辑退换操作';
 

@@ -4,7 +4,7 @@ $_['heading_title']       = '选项';
 
 // Text
 $_['text_success']        = '成功: 已经修改选项！';
-$_['text_list']           = '选项列表 - (在线教程: <a href="http://www.mycncart.com/blog-132.html" target="_blank">http://www.mycncart.com/blog-132.html</a>)';
+$_['text_list']           = '选项列表';
 $_['text_add']            = '添加选项';
 $_['text_edit']           = '编辑选项';
 $_['text_choose']         = '选择';

@@ -5,7 +5,7 @@ $_['heading_title']    = '谷歌验证码';
 $_['text_extension']   = '扩展功能';
 $_['text_captcha']     = '验证码';
 $_['text_success']	   = '成功: 已修改谷歌验证码!';
-$_['text_edit']        = '编辑谷歌验证码 - (在线教程: <a href="http://www.mycncart.com/blog-108.html" target="_blank">http://www.mycncart.com/blog-108.html</a>)';
+$_['text_edit']        = '编辑谷歌验证码';
 $_['text_signup']      = '点击访问 <a href="https://www.google.com/recaptcha/intro/index.html" target="_blank"><u>谷歌验证码页面</u></a> 并注册您的网站。';
 
 // Entry

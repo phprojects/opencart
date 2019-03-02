@@ -4,7 +4,7 @@ $_['heading_title']          = '商品';
 
 // Text
 $_['text_success']           = '成功: 已经修改商品！';
-$_['text_list']              = '商品列表 - (在线教程: <a href="http://www.mycncart.com/blog-34.html" target="_blank">http://www.mycncart.com/blog-34.html</a>)';
+$_['text_list']              = '商品列表';
 $_['text_add']               = '添加商品';
 $_['text_edit']              = '编辑商品';
 $_['text_filter']       	 = '筛选';

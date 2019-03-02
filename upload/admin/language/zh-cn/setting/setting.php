@@ -5,7 +5,7 @@ $_['heading_title']                    = '系统设置';
 // Text
 $_['text_stores']                      = '商店';
 $_['text_success']                     = '成功: 已修改系统设置！';
-$_['text_edit']                        = '编辑系统设置 - (在线教程: <a href="http://www.mycncart.com/blog-89.html" target="_blank">http://www.mycncart.com/blog-89.html</a>)';
+$_['text_edit']                        = '编辑系统设置';
 $_['text_product']                     = '商品';
 $_['text_review']                      = '商品评论';
 $_['text_voucher']                     = '礼品券';

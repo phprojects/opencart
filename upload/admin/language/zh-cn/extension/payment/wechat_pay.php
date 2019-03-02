@@ -5,7 +5,7 @@ $_['heading_title']                  = '微信支付';
 // Text
 $_['text_extension']                 = '扩展功能';
 $_['text_success']                   = '成功: 已修改微信支付账号资料！';
-$_['text_edit']                      = '编辑微信支付 - (在线教程: <a href="http://www.mycncart.com/blog-20.html" target="_blank">http://www.mycncart.com/blog-20.html</a>)';
+$_['text_edit']                      = '编辑微信支付';
 $_['text_wechat_pay']                = '<a target="_BLANK" href="https://pay.weixin.qq.com"><img src="view/image/payment/Wechat.png" alt="微信支付官网" title="微信支付官网" style="border: 1px solid #EEEEEE;" /></a>';
 
 // Entry

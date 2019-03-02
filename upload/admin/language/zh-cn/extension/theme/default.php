@@ -5,7 +5,7 @@ $_['heading_title']                    = '默认模板主题';
 // Text
 $_['text_extension']                   = '扩展功能';
 $_['text_success']                     = '成功: 已修改默认商铺主题！';
-$_['text_edit']                        = '编辑默认商铺主题 - (在线教程: <a href="http://www.mycncart.com/blog-126.html" target="_blank">http://www.mycncart.com/blog-126.html</a>)';
+$_['text_edit']                        = '编辑默认商铺主题';
 $_['text_general']                     = '常规';
 $_['text_product']                     = '商品';
 $_['text_image']                       = '图像';

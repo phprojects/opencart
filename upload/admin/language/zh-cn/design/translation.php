@@ -4,7 +4,7 @@ $_['heading_title']    = '语言编辑器';
 
 // Text
 $_['text_success']     = '成功: 已修改语言编辑器!';
-$_['text_list']        = '翻译记录列表 - (在线教程: <a href="http://www.mycncart.com/blog-88.html" target="_blank">http://www.mycncart.com/blog-88.html</a>)';
+$_['text_list']        = '翻译记录列表';
 $_['text_edit']        = '编辑翻译';
 $_['text_add']         = '添加翻译';
 $_['text_default']     = '默认';

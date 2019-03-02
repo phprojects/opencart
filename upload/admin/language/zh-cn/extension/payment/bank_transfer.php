@@ -5,7 +5,7 @@ $_['heading_title']		 = '银行转账';
 // Text
 $_['text_extension']	 = '扩展功能';
 $_['text_success']		 = '成功: 已修改银行转账信息！';
-$_['text_edit']          = '编辑银行转账 - (在线教程: <a href="http://www.mycncart.com/blog-120.html" target="_blank">http://www.mycncart.com/blog-120.html</a>)';
+$_['text_edit']          = '编辑银行转账';
 
 // Entry
 $_['entry_bank']		 = '银行转账指导信息';

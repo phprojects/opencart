@@ -4,7 +4,7 @@ $_['heading_title']         		= '会员管理';
 
 // Text
 $_['text_success']          		= '成功: 已修改会员！';
-$_['text_list']             		= '会员列表 - (在线教程: <a href="http://www.mycncart.com/blog-97.html" target="_blank">http://www.mycncart.com/blog-97.html</a>)';
+$_['text_list']             		= '会员列表';
 $_['text_add']              		= '添加会员';
 $_['text_edit']             		= '编辑会员';
 $_['text_default']          		= '默认';

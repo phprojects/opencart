@@ -5,7 +5,7 @@ $_['heading_title']                  = '支付宝';
 // Text
 $_['text_extension']                 = '扩展功能';
 $_['text_success']                   = '成功: 已修改支付宝账户资料！';
-$_['text_edit']                      = '编辑支付宝 - (在线教程: <a href="http://www.mycncart.com/blog-136.html" target="_blank">http://www.mycncart.com/blog-136.html</a>)';
+$_['text_edit']                      = '编辑支付宝';
 $_['text_alipay']                    = '<a target="_BLANK" href="https://open.alipay.com"><img src="view/image/payment/alipay.png" alt="Alipay Pay Website" title="支付宝官网" style="border: 1px solid #EEEEEE;" /></a>';
 $_['text_live']                      = '生产模式';
 $_['text_sandbox']                   = '测试模式';

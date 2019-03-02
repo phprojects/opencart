@@ -4,7 +4,7 @@ $_['heading_title']    = 'SEO URL';
 
 // Text
 $_['text_success']     = '成功: 已修改 SEO URL!';
-$_['text_list']        = 'SEO URL 列表 - (在线教程: <a href="http://www.mycncart.com/blog-37.html" target="_blank">http://www.mycncart.com/blog-37.html</a>)';
+$_['text_list']        = 'SEO URL 列表';
 $_['text_add']         = '新增 SEO URL';
 $_['text_edit']        = '编辑 SEO URL';
 $_['text_filter']      = '筛选';

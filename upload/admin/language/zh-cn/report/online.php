@@ -5,7 +5,7 @@ $_['heading_title']     = '会员在线报告';
 // Text
 $_['text_extension']    = '扩展功能';
 $_['text_success']      = '成功: 已修改会员在线报告！';
-$_['text_list']         = '在线列表 - (在线教程: <a href="http://www.mycncart.com/blog-65.html" target="_blank">http://www.mycncart.com/blog-65.html</a>)';
+$_['text_list']         = '在线列表';
 $_['text_filter']       = '筛选';
 $_['text_guest']        = '游客';
 

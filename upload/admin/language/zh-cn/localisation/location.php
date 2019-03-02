@@ -5,7 +5,7 @@ $_['heading_title']    = '线下商店';
 
 // Text
 $_['text_success']     = '成功: 已修改线下商店！';
-$_['text_list']        = '线下商店列表 - (在线教程: <a href="http://www.mycncart.com/blog-77.html" target="_blank">http://www.mycncart.com/blog-77.html</a>)';
+$_['text_list']        = '线下商店列表';
 $_['text_add']         = '添加线下商店';
 $_['text_edit']        = '编辑线下商店';
 $_['text_default']     = '默认';

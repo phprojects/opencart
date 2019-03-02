@@ -4,7 +4,7 @@ $_['heading_title']         = '审核会员';
 
 // Text
 $_['text_success']          = '成功: 已修改审核会员!';
-$_['text_list']             = '审核会员列表 - (在线教程: <a href="http://www.mycncart.com/blog-95.html" target="_blank">http://www.mycncart.com/blog-95.html</a>)';
+$_['text_list']             = '审核会员列表';
 $_['text_default']          = '默认';
 $_['text_customer']         = '会员';
 $_['text_affiliate']        = '推广会员';

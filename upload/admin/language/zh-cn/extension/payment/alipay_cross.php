@@ -5,7 +5,7 @@ $_['heading_title']                  = '支付宝跨境支付';
 // Text
 $_['text_extension']                 = '扩展功能';
 $_['text_success']                   = '成功: 已修改支付宝跨境支付！';
-$_['text_edit']                      = '编辑支付宝跨境支付 - (在线教程: <a href="http://www.mycncart.com/blog-137.html" target="_blank">http://www.mycncart.com/blog-137.html</a>)';
+$_['text_edit']                      = '编辑支付宝跨境支付';
 $_['text_alipay_cross']              = '<a target="_BLANK" href="https://global.alipay.com"><img src="view/image/payment/alipay-cross-border.png" alt="支付宝国际支付官网" title="支付宝国际支付官网" style="border: 1px solid #EEEEEE;" /></a>';
 $_['text_live']                      = '生产模式';
 $_['text_sandbox']                   = '测试模式';

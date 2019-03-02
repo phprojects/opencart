@@ -4,7 +4,7 @@ $_['heading_title']         = '自定义字段';
 
 // Text
 $_['text_success']          = '成功: 已修改自定义字段！';
-$_['text_list']             = '自定义字段列表 - (在线教程: <a href="http://www.mycncart.com/blog-96.html" target="_blank">http://www.mycncart.com/blog-96.html</a>)';
+$_['text_list']             = '自定义字段列表';
 $_['text_add']              = '新增自定义字段';
 $_['text_edit']             = '编辑自定义字段';
 $_['text_choose']           = '选择';

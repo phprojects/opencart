@@ -5,7 +5,7 @@ $_['heading_title']        = '邮件通知会员';
 // Text
 $_['text_success']         = '您的邮件已成功发送!';
 $_['text_sent']            = '您的邮件已成功发送 %s 封，共 %s 收件人！';
-$_['text_list']            = '邮件推广列表 - (在线教程: <a href="http://www.mycncart.com/blog-93.html" target="_blank">http://www.mycncart.com/blog-93.html</a>)';
+$_['text_list']            = '邮件推广列表';
 $_['text_default']         = '默认';
 $_['text_newsletter']      = '所有资讯订阅者';
 $_['text_customer_all']    = '所有会员';

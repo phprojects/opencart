@@ -5,7 +5,7 @@ $_['heading_title']          = '州/省/地区';
 
 // Text
 $_['text_success']           = '成功: 已修改州/省/地区！';
-$_['text_list']              = '州/省/地区列表 - (在线教程: <a href="http://www.mycncart.com/blog-76.html" target="_blank">http://www.mycncart.com/blog-76.html</a>)';
+$_['text_list']              = '州/省/地区列表';
 $_['text_add']               = '添加州/省/地区';
 $_['text_edit']              = '编辑州/省/地区';
 

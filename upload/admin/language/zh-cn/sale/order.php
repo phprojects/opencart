@@ -4,7 +4,7 @@ $_['heading_title']            	 = '订单';
 
 // Text
 $_['text_success']               = '成功: 已修改订单!';
-$_['text_list']                  = '订单列表 - (在线教程: <a href="http://www.mycncart.com/blog-98.html" target="_blank">http://www.mycncart.com/blog-98.html</a>)';
+$_['text_list']                  = '订单列表';
 $_['text_add']                   = '新增订单';
 $_['text_edit']                  = '编辑订单';
 $_['text_filter']                = '筛选';

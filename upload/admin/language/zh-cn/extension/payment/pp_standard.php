@@ -5,7 +5,7 @@ $_['heading_title']					 = 'PayPal 标准支付方式';
 // Text
 $_['text_extension']   				 = '扩展功能';
 $_['text_success']					 = 'Success: You have modified PayPal account details!';
-$_['text_edit']                      = '编辑 PayPal 标准支付方式 - (在线教程: <a href="http://www.mycncart.com/blog-69.html" target="_blank">http://www.mycncart.com/blog-69.html</a>)';
+$_['text_edit']                      = '编辑 PayPal 标准支付方式';
 $_['text_pp_standard']				 = '<img src="view/image/payment/paypal.png" alt="PayPal Website Payment Pro" title="PayPal Website Payment Pro iFrame" style="border: 1px solid #EEEEEE;" />';
 $_['text_authorization']			 = 'Authorization';
 $_['text_sale']						 = 'Sale'; 

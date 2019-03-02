@@ -5,7 +5,7 @@ $_['heading_title']                    = '网店';
 // Text
 $_['text_settings']                    = '系统设置';
 $_['text_success']                     = '成功： 您已成功更改设置！';
-$_['text_list']                        = '网店列表 - (在线教程: <a href="http://www.mycncart.com/blog-89.html" target="_blank">http://www.mycncart.com/blog-89.html</a>)';
+$_['text_list']                        = '网店列表';
 $_['text_add']                         = '添加网店';
 $_['text_edit']                        = '编辑网店';
 $_['text_items']                       = '商品显示';

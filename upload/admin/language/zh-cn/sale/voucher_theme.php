@@ -4,7 +4,7 @@ $_['heading_title']     = '代金券主题';
 
 // Text
 $_['text_success']      = '成功: 已修改代金券主题！';
-$_['text_list']         = '代金券主题列表 - (在线教程: <a href="http://www.mycncart.com/blog-99.html" target="_blank">http://www.mycncart.com/blog-99.html</a>)';
+$_['text_list']         = '代金券主题列表';
 $_['text_add']          = '添加代金券主题';
 $_['text_edit']         = '编辑代金券主题';
 

@@ -4,7 +4,7 @@ $_['heading_title']      = '扩展功能商城';
 
 // Text
 $_['text_success']       = '成功: 已修改扩展功能!';
-$_['text_list']          = '扩展功能列表 - (在线教程: <a href="http://www.mycncart.com/blog-104.html" target="_blank">http://www.mycncart.com/blog-104.html</a>)';
+$_['text_list']          = '扩展功能列表';
 $_['text_filter']        = '筛选';
 $_['text_search']        = '搜寻扩展功能及模板主题';
 $_['text_category']      = '分类';
