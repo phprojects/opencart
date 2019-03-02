@@ -61,3 +61,36 @@
 # IDE Project files
 /.idea
 /upload/.idea
+
+# ======added by admpub
+# Backup Files
+/storage/backup/*
+!/storage/backup/index.html
+
+# System Cache Files
+/storage/cache/*
+!/storage/cache/index.html
+
+# Download Files
+/storage/download/*
+!/storage/download/index.html
+
+# Log Files
+/storage/logs/*
+!/storage/logs/index.html
+
+# Marketing Files
+/storage/marketing/*
+!/storage/marketing/index.html
+
+# Modification Files
+/storage/modification/*
+!/storage/modification/index.html
+
+# Session Files
+/storage/session/*
+!/storage/session/index.html
+
+# Upload Files
+/storage/upload/*
+!/storage/upload/index.html
