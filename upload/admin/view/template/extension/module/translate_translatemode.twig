@@ -1,0 +1,164 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right">
+				<a href="{{ editmode }}" class="btn btn-default"><span>{{ button_editmode }}</span></a>
+      </div>
+      <h1>{{ heading_title }}</h1>
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    {% if error_warning %}
+    <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+    {% if success %}
+    <div class="alert alert-success"><i class="fa fa-check-circle"></i> {{ success }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <form action="" method="post" enctype="multipart/form-data" id="form">
+        	<input type="hidden" name="import" value="0" />
+          <div class="table-responsive">
+          	<table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <td class="text-left"><span>{{ column_interface }}</span></td>
+                  <td class="text-left"><span>{{ column_filename }}</span></td>
+                  <td class="text-left">
+                    {% if sort == 'key' %}
+                    <a href="{{ sort_key }}" class="{{ order|lower }}">{{ column_key }}</a>
+                    {% else %}
+                    <a href="{{ sort_key }}">{{ column_key }}</a>
+                    {% endif %}
+                  </td>
+                  <td class="text-left">
+                    {% if sort == 'value' %}
+                    <a href="{{ sort_value }}" class="{{ order|lower }}">{{ column_value }}</a>
+                    {% else %}
+                    <a href="{{ sort_value }}">{{ column_value }}</a>
+                    {% endif %}
+                  </td>
+                  <td class="text-left">
+                    {% if sort == 'value2' %}
+                    <a href="{{ sort_value2 }}" class="{{ order|lower }}">{{ column_value2 }}</a>
+                    {% else %}
+                    <a href="{{ sort_value2 }}">{{ column_value2 }}</a>
+                    {% endif %}
+                  </td>
+                  <td class="text-right">{{ column_action }}</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="filter">
+                  <td>
+                    <select name="filter_interface" class="form-control">
+                      {% for interface in interfaces %}
+                    	<option value="{{ interface }}"{{ interface == filter_interface ? ' selected="selected"' : '' }}>{{ interface }}</option>
+                      {% endfor %}
+                		</select>
+                  </td>
+                  <td>
+                    <select name="filter_filename" class="form-control">
+                    	<option value="main">{{ text_main }}</option>
+                    	{% for filename in filenames %}
+                  		<option value="{{ filename }}"{{ filename == filter_filename ? ' selected="selected"' : '' }}>{{ filename }}</option>
+                    	{% endfor %}
+                		</select>
+                  </td>
+                  <td></td>
+                  <td>
+                    <select name="filter_lang1" class="form-control">
+                    	{% for directory in directories %}
+                  		<option value="{{ directory }}"{{ directory == filter_lang1 ? ' selected="selected"' : '' }}>{{ directory }}</option>
+                    	{% endfor %}
+                  	</select>
+                  </td>
+                  <td>
+                    <select name="filter_lang2" class="form-control">
+                  	{% for directory in directories %}
+                		<option value="{{ directory }}"{{ directory == filter_lang2 ? ' selected="selected"' : '' }}>{{ directory }}</option>
+                  	{% endfor %}
+                  	</select>
+                  </td>
+                  <td class="text-right"><button type="button" id="filter" class="btn btn-primary pull-right"><i class="fa fa-filter"></i> {{ button_filter }}</button></td>
+                </tr>
+                {% if translations %}
+                {% for translation in translations %}
+                <tr>
+                  <td class="text-left">{{ translation.interface }}</td>
+                  <td class="text-left">{{ translation.filename == 'main' ? text_main : translation.filename }}</td>
+                  <td class="text-left">{{ translation.key }}</td>
+                  <td class="text-left"{{ translation.value is null ? ' style="background-color: #ffeeee;"' : '' }}>{{ translation.value }}</td>
+                  <td class="text-left"{{ translation.value2 is null ? ' style="background-color: #ffeeee;"' : '' }}>{{ translation.value2 }}</td>
+                  <td class="text-right">
+                    {% for action in translation.action %}
+                    <a href="{{ action.href }}">{{ action.text }}</a>
+                    {% endfor %}
+                  </td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                  <td class="center" colspan="9">{{ text_no_results }}</td>
+                </tr>
+                {% endif %}
+              </tbody>
+            </table>
+  				</div>
+        </form>
+        <div class="row">
+          <div class="col-sm-6 text-left">{{ pagination }}</div>
+          <div class="col-sm-6 text-right">{{ results }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript"><!--
+function filter() {
+	url = 'index.php?route=extension/module/translate/translatemode&user_token={{ user_token }}';
+	var filter_interface = $('select[name=\'filter_interface\']').val();
+	if (filter_interface != '*') {
+		url += '&filter_interface=' + encodeURIComponent(filter_interface);
+	}
+	var filter_filename = $('select[name=\'filter_filename\']').val();
+	if (filter_filename != '*') {
+		url += '&filter_filename=' + encodeURIComponent(filter_filename);
+	}
+	var filter_lang1 = $('select[name=\'filter_lang1\']').val();
+	if (filter_lang1 != '*') {
+		url += '&filter_lang1=' + encodeURIComponent(filter_lang1);
+	}
+	var filter_lang2 = $('select[name=\'filter_lang2\']').val();
+	if (filter_lang2 != '*') {
+		url += '&filter_lang2=' + encodeURIComponent(filter_lang2);
+	}
+	location = url;
+}
+//--></script>
+<script type="text/javascript"><!--
+$(document).ready(function() {
+	$('input[type="text"]').keyup(function(e) {
+		if(e.which == 13) {
+			filter();
+		}
+	});
+	$('select').change(function() {
+		filter();
+	});
+	$('#filter').click(function() {
+		filter();
+	});
+});
+//--></script>
+{{ footer }}

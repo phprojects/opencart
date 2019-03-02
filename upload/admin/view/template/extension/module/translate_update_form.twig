@@ -1,0 +1,100 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right">
+        <button type="submit" form="form" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa fa-save"></i></button>
+        <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a>
+      </div>
+      <h1>{{ heading_title }}</h1>
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    {% if error_warning %}
+    <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form" class="form-horizontal">
+        	<div class="table-responsive">
+          	<table class="table table-bordered table-hover">
+          		<tr>
+          			<td>{{ entry_interface }}</td>
+          			<td>
+          				<input readonly="readonly" type="text" class="form-control" name="interface" value="{{ post_interface }}" />
+          				{% if error_interface %}
+          				<span class="error">{{ error_interface }}</span>
+          				{% endif %}
+          			</td>
+          		</tr>
+          		<tr>
+          			<td>{{ entry_filename }}</td>
+          			<td>
+          				<input readonly="readonly" type="text" class="form-control" name="filename" value="{{ post_filename }}" />
+          				{% if error_filename %}
+          				<span class="error">{{ error_filename }}</span>
+          				{% endif %}
+          			</td>
+          		</tr>
+          		<tr>
+          			<td>{{ entry_key }}</td>
+          			<td>
+          				<input readonly="readonly" type="text" class="form-control" name="key" value="{{ post_key }}" />
+          				{% if error_key %}
+          				<span class="error">{{ error_key }}</span>
+          				{% endif %}
+          			</td>
+          		</tr>
+          		{% for value in values %}
+          		<tr>
+          			<td>
+          				<img src="{{ value.language_image }}" />
+          				<span>{{ value.directory }}</span>
+          				<br>
+          				<br>
+          				<input type="checkbox" class="deleted" name="{{ value.directory }}"{{ value.deleted ? ' checked="checked"' : '' }} />
+          				<span>{{ text_deleted }}</span>
+          			</td>
+          			<td>
+          				<textarea name="values[{{ value.directory }}]" rows="4" cols="80"{{ value.deleted ? ' disabled="disabled"' : '' }}>{{ value.value }}</textarea>
+          			</td>
+          		</tr>
+          		{% endfor %}
+          	</table>
+        	</div>
+        </form>
+      </div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript"><!--
+$(document).ready(function() {
+	$('input.deleted:checked').each(function() {
+		$('textarea[name="values['+$(this).attr('name')+']"]')
+			.css({'text-decoration': 'line-through'})
+			.fadeTo(0, '0.2');
+	});
+	$('input.deleted').change(function() {
+		if($(this).is(':checked')) {
+			$('textarea[name="values['+$(this).attr('name')+']"]')
+				.css({'text-decoration': 'line-through'})
+				.attr('disabled', 'disabled')
+				.fadeTo(0, '0.2');
+		}
+		else {
+			$('textarea[name="values['+$(this).attr('name')+']"]')
+			.css({'text-decoration': 'none'})
+			.removeAttr('disabled')
+			.fadeTo(0, '1');
+		}
+	});
+});
+//--></script>
+{{ footer }}
