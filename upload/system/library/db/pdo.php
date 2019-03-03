@@ -6,7 +6,9 @@ final class PDO {
 
 	public function __construct($hostname, $username, $password, $database, $port = '3306') {
 		try {
-			$this->connection = @new \PDO("mysql:host=" . $hostname . ";port=" . $port . ";dbname=" . $database, $username, $password, array(\PDO::ATTR_PERSISTENT => true));
+            $debugBarExist = is_debug() && class_exists(\DebugBar\StandardDebugBar::class);
+			$this->connection = @new \PDO("mysql:host=" . $hostname . ";port=" . $port . ";dbname=" . $database, $username, $password, array(\PDO::ATTR_PERSISTENT => 
+            !$debugBarExist));
 		} catch (\PDOException $e) {
 			throw new \Exception('Error: Could not make a database link using ' . $username . '@' . $hostname . '!');
 		}
@@ -109,4 +111,9 @@ final class PDO {
 	public function __destruct() {
 		$this->connection = null;
 	}
+
+	//[admpub]
+    public function getConnection() {
+        return $this->connection;
+    }
 }

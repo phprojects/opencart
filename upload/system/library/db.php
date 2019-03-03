@@ -82,4 +82,9 @@ class DB {
 	public function connected() {
 		return $this->adaptor->connected();
 	}
+
+	//[admpub]
+	public function getAdaptor() {
+	    return $this->adaptor;
+	}
 }

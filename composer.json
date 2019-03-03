@@ -19,7 +19,7 @@
     "docs": "http://docs.opencart.com/"
   },
   "config": {
-    "vendor-dir": "./storage/vendor/"
+    "vendor-dir": "./upload/vendor/"
   },
   "require": {
     "cardinity/cardinity-sdk-php": "^1.0",

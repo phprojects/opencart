@@ -12,7 +12,7 @@ if (!defined('DIR_APPLICATION')) {
 	header('Location: install/index.php');
 	exit;
 }
-
+#define('DEBUG',true);
 // Startup
 require_once(DIR_SYSTEM . 'startup.php');
 

@@ -31,6 +31,7 @@
   {% for script in scripts %}
     <script type="text/javascript" src="{{ script }}"></script>
   {% endfor %}
+  {{ helper.debug_bar.renderHead }}
 </head>
 <body>
 <div id="container">

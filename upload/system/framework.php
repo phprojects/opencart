@@ -98,6 +98,27 @@ if ($config->get('db_autostart')) {
 	//$db->query("SET time_zone = '" . $db->escape(date('P')) . "'");
 }
 
+//[admpub]
+if (is_debug()){
+	if (class_exists(\DebugBar\StandardDebugBar::class)) {
+	    $debugBar = new \DebugBar\StandardDebugBar();
+	    $adaptor = $registry->get('db')->getAdaptor();
+	    if ($adaptor instanceof \DB\PDO) {
+	        $pdoCollector = new DebugBar\DataCollector\PDO\TraceablePDO($adaptor->getConnection());
+	        $debugBar->addCollector(new DebugBar\DataCollector\PDO\PDOCollector($pdoCollector));
+	    }
+	    $debugBarRenderer = $debugBar->getJavascriptRenderer();
+	    $registry->set('debug_bar', $debugBarRenderer);
+	}
+	if (class_exists(\Whoops\Run::class)) {
+	    $whoops = new \Whoops\Run;
+	    $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+	    $whoops->register();
+	    $registry->set('whoops', $whoops);
+	}
+}
+
+
 // Session
 $session = new Session($config->get('session_engine'), $registry);
 $registry->set('session', $session);

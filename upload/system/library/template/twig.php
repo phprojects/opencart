@@ -66,6 +66,7 @@ final class Twig {
 		$cache_file = $twig->getCache(false)->generateKey(DIR_TEMPLATE . $template . '.twig', $template_class_name);
 
 		try {
+		    $this->data['helper'] = \Utils\Helper::getSingleton();
 			// 6. Check if cached file exists with modifications if not we create one
 			if (!is_file($cache_file)) {
 				// 7. Get the source code using the source
