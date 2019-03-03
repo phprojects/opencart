@@ -3,8 +3,24 @@ class ControllerStartupError extends Controller {
 	public function index() {
 		$this->registry->set('log', new Log($this->config->get('config_error_filename')));
 		
-		set_error_handler(array($this, 'handler'));	
+		set_error_handler(array($this, 'handler'));
+		set_exception_handler(array($this, 'exception_handler'));//[admpub]
 	}
+
+	// [admpub] support whoops
+    public function exception_handler($exception) {
+        if (!is_object($exception)) {
+            return;
+        }
+        if ($this->config->get('config_error_log')) {
+            $this->logger = new Log('exception.log');
+            $this->logger->writeException($exception);
+        }
+        if ($this->whoops && is_debug()) {
+            $this->whoops->handleException($exception);
+        }
+    }
+
 	
 	public function handler($code, $message, $file, $line) {
 		// error suppressed with @
@@ -38,6 +54,11 @@ class ControllerStartupError extends Controller {
 			$this->log->write('PHP ' . $error . ':  ' . $message . ' in ' . $file . ' on line ' . $line);
 		}
 	
+		//[admpub]
+        if ($this->whoops && is_debug()) {
+            throw new \ErrorException($message, $code, 0, $file, $line);
+		}
+		
 		return true;
 	} 
 } 
