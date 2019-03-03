@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+    <name>HTML Code</name>
+    <version>1.0</version>
+    <author>info@ocdemo.eu</author>
+    <link>mailto:info@ocdemo.eu</link>
+	<code>HTML Code</code>
+	
+	<file path="admin/model/design/layout.php">
+		<operation error="skip">
+			<search><![CDATA[$this->db->query("DELETE FROM " . DB_PREFIX . "layout_module WHERE]]></search>
+			<add position="replace"><![CDATA[$this->db->query("DELETE FROM " . DB_PREFIX . "layout_module WHERE `code` NOT REGEXP '^html_code' AND ]]></add>
+		</operation>
+	</file>
+	
+	<file path="admin/controller/design/layout.php">
+		<operation>
+			<search><![CDATA[foreach ($extensions as $code) {]]></search>
+			<add position="after"><![CDATA[				
+				if( $code == 'html_code' ) continue;
+			]]></add>
+		</operation>
+		<operation>
+			<search><![CDATA[$this->load->controller('common/header');]]></search>
+			<add position="after"><![CDATA[
+				if( __FUNCTION__ == 'getForm' ) {	
+					foreach( $data['layout_modules'] as $hc_k => $hc_v ) {
+						if( strpos( $hc_v['code'], 'html_code' ) === 0 ) {
+							unset( $data['layout_modules'][$hc_k] );
+						}
+					}
+				}
+			]]></add>
+		</operation>
+	</file>
+
+	<file path="catalog/controller/common/header.php">
+		<operation>
+			<search><![CDATA[$this->load->view(]]></search>
+			<add position="before"><![CDATA[
+				$this->load->model('design/layout');
+				$this->load->model('setting/module');
+
+				if (isset($this->request->get['route'])) {
+					$route = (string)$this->request->get['route'];
+				} else {
+					$route = 'common/home';
+				}
+				
+				$layout_id = 0;
+
+				if ($route == 'product/category' && isset($this->request->get['path'])) {
+					$this->load->model('catalog/category');
+
+					$path = explode('_', (string)$this->request->get['path']);
+
+					$layout_id = $this->model_catalog_category->getCategoryLayoutId(end($path));
+				}
+
+				if ($route == 'product/product' && isset($this->request->get['product_id'])) {
+					$this->load->model('catalog/product');
+
+					$layout_id = $this->model_catalog_product->getProductLayoutId($this->request->get['product_id']);
+				}
+
+				if ($route == 'information/information' && isset($this->request->get['information_id'])) {
+					$this->load->model('catalog/information');
+
+					$layout_id = $this->model_catalog_information->getInformationLayoutId($this->request->get['information_id']);
+				}
+
+				if (!$layout_id) {
+					$layout_id = $this->model_design_layout->getLayout($route);
+				}
+
+				if (!$layout_id) {
+					$layout_id = $this->config->get('config_layout_id');
+				}
+
+				$data['modules_top'] = array();
+				$data['modules_bottom'] = array();
+				
+				foreach( $this->model_design_layout->getLayoutModules($layout_id, strpos( basename( __FILE__ ), 'header.php' ) !== false ? 'header_top' : 'footer_top') as $module ) {
+					$part = explode('.', $module['code']);
+					
+					if( $part[0] == 'html_code' && isset( $part[1] ) ) {
+						$hc_settings = $this->model_setting_module->getModule( $part[1] );
+
+						if( ! empty( $hc_settings['status'] ) ) {
+							$data['modules_top'][] = $this->load->controller('extension/module/' . $part[0], $hc_settings);
+						}
+					}
+				}
+				
+				foreach( $this->model_design_layout->getLayoutModules($layout_id, strpos( basename( __FILE__ ), 'header.php' ) !== false ? 'header_bottom' : 'footer_bottom') as $module ) {
+					$part = explode('.', $module['code']);
+					
+					if( $part[0] == 'html_code' && isset( $part[1] ) ) {
+						$hc_settings = $this->model_setting_module->getModule( $part[1] );
+
+						if( ! empty( $hc_settings['status'] ) ) {
+							$data['modules_bottom'][] = $this->load->controller('extension/module/' . $part[0], $hc_settings);
+						}
+					}
+				}
+				$modules_bottom = '';
+					if( ! empty( $data['modules_bottom'] ) ) { 
+						foreach( $data['modules_bottom'] as $hc_module ) {
+						$modules_bottom .= $hc_module;
+					}
+				}
+				
+			]]></add>
+		</operation>
+	</file>
+	
+	<file path="catalog/controller/common/header.php">
+		<operation>
+			<search><![CDATA['common/header', $data)]]></search>
+			<add position="replace"><![CDATA['common/header', $data) . $modules_bottom]]></add>
+		</operation>
+	</file>
+	
+	<file path="catalog/controller/common/footer.php">
+		<operation>
+			<search><![CDATA[$this->load->view(]]></search>
+			<add position="before"><![CDATA[
+				$this->load->model('design/layout');
+				$this->load->model('setting/module');
+
+				if (isset($this->request->get['route'])) {
+					$route = (string)$this->request->get['route'];
+				} else {
+					$route = 'common/home';
+				}
+				
+				$layout_id = 0;
+
+				if ($route == 'product/category' && isset($this->request->get['path'])) {
+					$this->load->model('catalog/category');
+
+					$path = explode('_', (string)$this->request->get['path']);
+
+					$layout_id = $this->model_catalog_category->getCategoryLayoutId(end($path));
+				}
+
+				if ($route == 'product/product' && isset($this->request->get['product_id'])) {
+					$this->load->model('catalog/product');
+
+					$layout_id = $this->model_catalog_product->getProductLayoutId($this->request->get['product_id']);
+				}
+
+				if ($route == 'information/information' && isset($this->request->get['information_id'])) {
+					$this->load->model('catalog/information');
+
+					$layout_id = $this->model_catalog_information->getInformationLayoutId($this->request->get['information_id']);
+				}
+
+				if (!$layout_id) {
+					$layout_id = $this->model_design_layout->getLayout($route);
+				}
+
+				if (!$layout_id) {
+					$layout_id = $this->config->get('config_layout_id');
+				}
+
+				$data['modules_top'] = array();
+				$data['modules_bottom'] = array();
+				
+				foreach( $this->model_design_layout->getLayoutModules($layout_id, strpos( basename( __FILE__ ), 'header.php' ) !== false ? 'header_top' : 'footer_top') as $module ) {
+					$part = explode('.', $module['code']);
+					
+					if( $part[0] == 'html_code' && isset( $part[1] ) ) {
+						$hc_settings = $this->model_setting_module->getModule( $part[1] );
+
+						if( ! empty( $hc_settings['status'] ) ) {
+							$data['modules_top'][] = $this->load->controller('extension/module/' . $part[0], $hc_settings);
+						}
+					}
+				}
+				
+				foreach( $this->model_design_layout->getLayoutModules($layout_id, strpos( basename( __FILE__ ), 'header.php' ) !== false ? 'header_bottom' : 'footer_bottom') as $module ) {
+					$part = explode('.', $module['code']);
+					
+					if( $part[0] == 'html_code' && isset( $part[1] ) ) {
+						$hc_settings = $this->model_setting_module->getModule( $part[1] );
+
+						if( ! empty( $hc_settings['status'] ) ) {
+							$data['modules_bottom'][] = $this->load->controller('extension/module/' . $part[0], $hc_settings);
+						}
+					}
+				}
+				
+			]]></add>
+		</operation>
+	</file>
+	<!-- /////////////////////////////////////////////////////////////////// -->
+	
+	<file path="catalog/view/theme/*/template/common/header.twig">
+		<operation>
+			<search><![CDATA[<body]]></search>
+			<add position="after"><![CDATA[
+				{% if modules_top is not empty %}
+				{% for hc_module in modules_top %}
+						{{ hc_module }}
+					{% endfor %}
+				{% endif %}
+			]]></add>
+		</operation>
+		<!--<operation>
+			<search><![CDATA[<?php echo $category['name']; ?></a></li>]]></search>
+			<add position="after" offset="7"><![CDATA[
+				<?php if( ! empty( $modules_bottom ) ) { ?>
+					<?php foreach( $modules_bottom as $hc_module ) { ?>
+						<?php echo $hc_module; ?>
+					<?php } ?>
+				<?php } ?>
+			]]></add>
+		</operation>-->
+	</file>
+	
+		<file path="catalog/view/theme/*/template/common/footer.twig">
+		<operation>
+			<search><![CDATA[<footer]]></search>
+			<add position="before"><![CDATA[
+			{% if modules_top is not empty %}
+				{% for hc_module in modules_top %}
+					{{hc_module}}
+				{% endfor %}
+			{% endif %}
+			]]></add>
+		</operation>
+		<operation>
+			<search><![CDATA[</body>]]></search>
+			<add position="replace"><![CDATA[
+				{% if modules_bottom is not empty %}
+					{% for hc_module in modules_bottom %}
+						{{hc_module}}
+					{% endfor %}
+				{% endif %}
+				</body>
+			]]></add>
+		</operation>
+	</file>
+
+</modification>

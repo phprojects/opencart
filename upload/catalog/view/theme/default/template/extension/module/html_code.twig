@@ -1,0 +1,12 @@
+{% if mode == 'box' %}
+	<div class="box html-code-box">
+		{% if header %}
+			<h3><span>{{header}}</span></h3>
+		{% endif %}
+		<div class="box-content html-code-content">
+			{{description}}
+		</div>
+	</div>
+{% else %}
+	{{description}}
+{% endif %}

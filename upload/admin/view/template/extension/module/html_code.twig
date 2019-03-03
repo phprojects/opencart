@@ -1,0 +1,720 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="float-right">
+        <button type="submit" form="form-html" formaction="{{ action }}" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fas fa-save"></i></button>
+        {% if variant %}
+          <button type="button" id="form-variant" data-toggle="tooltip" title="{{ button_variant }}" class="btn btn-warning"><i class="fas fa-save"></i></button>
+        {% endif %}
+        <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-light"><i class="fas fa-reply"></i></a></div>
+      <h1>{{ heading_title }}</h1>
+      <ol class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+          <li class="breadcrumb-item"><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+	<div class="container-fluid">
+		{% if success %}
+			<div class="alert alert-success alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ success }}
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+			</div>
+		{% endif %}
+
+		{% if error_warning %}
+			<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+			</div>
+		{% endif %}
+		
+		<div class="card">
+			<div class="card-header">
+				<h3 class="panel-title"><i class="fa fa-pencil"></i> {{text_edit}}</h3>
+			</div>
+			<div class="card-body">
+				<form action="{{action}}" method="post" enctype="multipart/form-data" id="form-html">
+					  <ul class="nav nav-tabs">
+						  <li class="nav-item active"><a href="{{tab_action_main}}" data-toggle="tab" class="nav-link"><i class="fa fa-file"></i> {{tab_main}}</a></li>
+						  <li class="nav-item"><a href="{{tab_action_settings}}" class="nav-link"><i class="fa fa-cog"></i> {{tab_settings}}</a></li>
+						  <li class="nav-item"><a href="{{tab_action_about}}" class="nav-link"><i class="fa fa-question"></i> {{tab_about}}</a></li>
+					  </ul>
+				  <div class="tab-content">
+					<div class="tab-pane active">
+					<div class="col-md-12">
+					{% if module is empty %}
+							
+					<ul></ul>
+							
+					<button type="button" id="module-add" onclick="addModule();" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> {{button_add_module}}</button>
+					{% endif %}
+					{% set module_row = 1  %}
+					  <div class="tab-content">
+				  {% if module is not empty %}
+				  <div id="tab-module-{{module_row}}" >
+					  <table class="table">
+						<tr>
+						  <td width="150">{{text_name}}</td>
+						  <td>
+							  <input type="text" value="{% if module['name'] is defined %}{{module['name']}}{% endif %}" class="html_tab_name form-control" name="html_code_module[name]" id="name-{{module_row}}" />
+						  </td>
+						</tr>
+						<tr>
+						  <td>{{text_mode}}</td>
+						  <td><select name="html_code_module[mode]" class="form-control" id="mode-{{module_row}}">
+								  <option value="none" {% if module['mode'] is empty or module['mode'] == 'none' %} selected="selected" {% endif %}>{{text_mode_none}}</option>
+						
+								  <option value="box" {% if module['mode'] is defined and module['mode'] == 'box' %} selected="selected" {% endif %} > {{text_mode_box}} </option>		
+							  </select>
+						  </td>
+						</tr>
+					  </table>
+					<ul id="language-{{module_row}}" class="nav nav-tabs">
+					  {% for language in languages %}
+						<li class="nav-item"><a href="#tab-language-{{module_row}}-{{language['language_id']}}" data-toggle="tab" class="nav-link"><img src="{% if flag %}language/{{language['code']}}/{{language['code']}}.png{% else %}view/image/flags/{{language['image']}}{% endif %}" title="{{language['name']}}" /> {{language['name']}}</a>
+					  {% endfor %}
+					</ul>
+					  <div class="tab-content">
+					{% for language in languages %}	
+					<div class="tab-pane" id="tab-language-{{module_row}}-{{language['language_id']}}">
+					  <table class="table">
+						<tr id="header-{{module_row}}-{{language['language_id']}}"{% if module['mode'] is not defined or module['mode'] != 'box' %} style="display:none" {% endif %}>
+						  <td>{{text_header}}</td>					
+						  <td><input type="text" class="form-control" style="width: 400px" name="html_code_module[header][{{language['language_id']}}]" value="{% if module['header'][language['language_id']] is defined %}{{module['header'][language['language_id']]}}{% else %}{% endif %}" /></td>
+						</tr>																													 
+						<tr>
+						  <td width="200">{{text_html}}</td>
+						  <td>
+							  <input type="hidden" id="texteditor-{{module_row}}-{{language['language_id']}}" name="html_code_module[texteditor][{{language['language_id']}}]" class="form-control" value="{% if module['texteditor'][language['language_id']] is not defined or module['texteditor'][language['language_id']] == 1 %}1{% else %}0{% endif %}" />
+							  <a href="#" rel="description-{{module_row}}-{{language['language_id']}}">																			
+								 {{text_enable_disable_texteditor}}
+							  </a>
+							  <div style="clear: both;"></div>
+							  <textarea style="width:100%; height:300px" name="html_code_module[description][{{language['language_id']}}]" id="description-{{module_row}}-{{language['language_id']}}">{% if module['description'][language['language_id']] is defined %}{{module['description'][language['language_id']]}}{% else %}{% endif %}</textarea>
+						  </td>																																									
+						</tr>
+					  </table>
+					</div>
+					
+					{% endfor %}
+					  </div>
+					<table class="table">
+					  <tr>
+						<td width="200">{{entry_layout}}<span class="help">{{text_checkbox_guide}}</span></td>
+						<td>
+							<div class="scrollbox">
+								{% for layout_id, layout in layouts %}
+								
+								  <div class="{% if layout_id is divisible by(2) %} even {% else %} odd {% endif %}">
+									  <input type="checkbox" value="{{layout['layout_id']}}" id="layout_id-{{module_row}}" name="html_code_module[layout_id][]" {% if module['layout_id'] is defined and layout['layout_id'] in module['layout_id'] %} checked="checked" {% endif %} />
+											 {{layout['name']}}																									
+								  </div>
+								  {% endfor %}
+							</div>
+
+							<a onclick="$(this).parent().find(':checkbox').attr('checked', true).trigger('change');">Select All</a>
+		  /
+		  <a onclick="$(this).parent().find(':checkbox').attr('checked', false).trigger('change');">Unselect All</a>
+					  </tr>
+					  <tr id="category_id-{{module_row}}" {% if module['layout_id'] is not defined or settings['html_code_layout_c'] not in module['layout_id'] %} style="display:none" {% endif %}>							 
+						<td>{{entry_show_in_categories}}<span class="help">{{text_checkbox_guide}}</span></td>
+						<td>
+							<div class="scrollbox">
+								{% for category_id, category in categories %}
+								  <div class="{% if category_id is divisible by(2) %}even{% else %}odd{% endif %}">
+									  <input type="checkbox" value="{{category['category_id']}}" name="html_code_module[category_id][]" {% if module['category_id'] is defined and category['category_id'] in module['category_id'] %} checked="checked" {% endif %} />
+											 {{category['name']}}																		
+								  </div>
+								{% endfor %}
+							</div>
+
+							<a onclick="$(this).parent().find(':checkbox').attr('checked', true);">Select All</a>
+		  /
+		  <a onclick="$(this).parent().find(':checkbox').attr('checked', false);">Unselect All</a>
+						</td>
+					  </tr>									
+					  <tr id="information_id-{{module_row}}" {% if module['layout_id'] is not defined or settings['html_code_layout_i'] not in module['layout_id'] %} style="display:none" {% endif %}>
+						<td>{{entry_show_in_informations}}<span class="help">{{text_checkbox_guide}}</span></td>
+						<td>
+							<div class="scrollbox">
+								
+								{% for information_id, information in informations %}
+								  <div class="{% if information_id is divisible by(2) %}even{% else %}odd{% endif %}">
+									  <input type="checkbox" value="{{information['information_id']}}" name="html_code_module[information_id][]" {% if module['information_id'] is defined and information['information_id'] in module['information_id'] %} checked="checked" {% endif %} />
+											 {{information['title']}}																				
+								  </div>
+								{% endfor %}
+							</div>
+
+							<a onclick="$(this).parent().find(':checkbox').attr('checked', true);">Select All</a>
+		  /
+		  <a onclick="$(this).parent().find(':checkbox').attr('checked', false);">Unselect All</a>
+						</td>
+					  </tr>										
+					  <tr id="products_id-input-{{module_row}}" {% if module['layout_id'] is not defined or settings['html_code_layout_p'] not in module['layout_id'] %} style="display:none;"{% endif %}>
+						<td>{{entry_products}}<span class="help">{{text_autocomplete}}</span></td>
+						<td><input type="text" name="product-name" value="" class="form-control" /></td>
+					  </tr>										
+					  <tr id="products_id-list-{{module_row}}" {% if module['layout_id'] is not defined or settings['html_code_layout_p'] not in module['layout_id'] %} style="display:none;"{% endif %}>
+						<td><span class="help">{{text_checkbox_guide}}</span></td>
+						<td>
+						<div class="scrollbox">
+						  {% if products is not empty %}
+							{% for product_id, name in products %}
+							<div>
+								<a class="btn btn-xs" style="color: red"><i class="fa fa-minus-circle"></i></a>
+								  {{name}}
+								  <input type="hidden" name="html_code_module[product_id][]" value="{{product_id}}" />
+							</div>
+							{% endfor %}
+						  {% endif %}
+						  </div></td>
+					  </tr>
+					  <tr>
+						<td>{{entry_store}}</td>
+						<td>
+							<div class="scrollbox">
+								{% for store_id, store in stores %}
+								  <div class="{{store_id%2 ? 'even' : 'odd'}}">											
+									  <input type="checkbox" value="{{store['store_id']}}" name="html_code_module[store_id][]" {% if module['store_id'] is defined and store['store_id'] in module['store_id'] %} checked="checked" {% endif %} />
+											 {{store['name']}}
+								  </div>
+								{% endfor %}
+							</div>
+
+							<a onclick="$(this).parent().find(':checkbox').attr('checked', true);">Select All</a>
+		  /
+		  <a onclick="$(this).parent().find(':checkbox').attr('checked', false);">Unselect All</a>
+					  </tr>
+					  <tr>
+						<td>
+							{{entry_customer_group}}<span class="help">{{text_checkbox_guide}}</span>
+						</td>
+						<td>
+							<div class="scrollbox">
+								{% for customer_group_id, customer_group in customer_groups %}
+								  <div class="{% if customer_group_id is divisible by(2) %}even{% else %}odd{% endif %}">									
+									  <input type="checkbox" value="{{customer_group['customer_group_id']}}" name="html_code_module[customer_group_id][]" {% if module['customer_group_id'] is defined and customer_group['customer_group_id'] in module['customer_group_id'] %} checked="checked"{% endif %} />
+											 {{customer_group['name']}}
+								  </div>
+								{% endfor %}
+							</div>
+
+							<a onclick="$(this).parent().find(':checkbox').attr('checked', true);">Select All</a>
+		  /
+		  <a onclick="$(this).parent().find(':checkbox').attr('checked', false);">Unselect All</a>
+					  </tr>
+					  <tr>
+						<td>{{entry_position}}</td>
+						<td><select name="html_code_module[position]" class="form-control">
+							{% if module['position'] == 'content_top' %}	
+							<option value="content_top" selected="selected">{{text_content_top}}</option>
+							{% else %}
+							<option value="content_top">{{text_content_top}}</option>
+							{% endif %}
+							{% if module['position'] == 'content_bottom' %}	
+							<option value="content_bottom" selected="selected">{{text_content_bottom}}</option>
+							{% else %}
+							<option value="content_bottom">{{text_content_bottom}}</option>
+							{% endif %}
+							{% if module['position'] == 'column_left' %}	
+							<option value="column_left" selected="selected">{{text_column_left}}</option>
+							{% else %}
+							<option value="column_left">{{text_column_left}}</option>
+							{% endif %}
+							{% if module['position'] == 'column_right' %}	
+							<option value="column_right" selected="selected">{{text_column_right}}</option>
+							{% else %}
+							<option value="column_right">{{text_column_right}}</option>
+							{% endif %}
+							{% if module['position'] == 'header_top' %}
+							<option value="header_top" selected="selected">{{text_header_top}}</option>
+							{% else %}
+							<option value="header_top">{{text_header_top}}</option>
+							{% endif %}
+							{% if module['position'] == 'header_bottom' %}
+							<option value="header_bottom" selected="selected">{{text_header_bottom}}</option>
+							{% else %}
+							<option value="header_bottom">{{text_header_bottom}}</option>
+							{% endif %}
+							{% if module['position'] == 'footer_top' %}
+							<option value="footer_top" selected="selected">{{text_footer_top}}</option>
+							{% else %}
+							<option value="footer_top">{{text_footer_top}}</option>
+							{% endif %}
+							{% if module['position'] == 'footer_bottom' %}
+							<option value="footer_bottom" selected="selected">{{text_footer_bottom}}</option>
+							{% else %}
+							<option value="footer_bottom">{{text_footer_bottom}}</option>
+							{% endif %}
+						  </select></td>
+					  </tr>
+					  <tr>
+						<td>{{entry_php}}</td>
+						<td><select name="html_code_module[php]" class="form-control">
+							{% if module['php'] %}
+							<option value="0">{{text_disabled}}</option>
+							<option value="1" selected="selected">{{text_enabled}}</option>
+							{% else %}
+							<option value="0" selected="selected">{{text_disabled}}</option>
+							<option value="1">{{text_enabled}}</option>
+							{% endif %}
+						  </select></td>
+					  </tr>
+					  <tr>
+						<td>{{entry_status}}</td>
+						<td><select name="html_code_module[status]" class="form-control">
+							{% if module['status'] %}
+							<option value="1" selected="selected">{{text_enabled}}</option>
+							<option value="0">{{text_disabled}}</option>
+							{% else %}
+							<option value="1">{{text_enabled}}</option>
+							<option value="0" selected="selected">{{text_disabled}}</option>
+							{% endif %}
+						  </select></td>
+					  </tr>
+					  <tr>
+						<td>{{entry_sort_order}}</td>
+						<td><input type="text" name="html_code_module[sort_order]" value="{{module['sort_order']}}" size="3" class="form-control" /></td>
+					  </tr>
+					</table>
+				  </div>
+				  {% set module_row = module_row + 1 %}
+				 {% endif %}</div></div></div>
+					</div>
+				</form>
+			</div>
+    </div>
+  </div>
+</div>
+
+<style type="text/css">
+	.col-md-2 .nav-tabs > li {
+		float: none;
+		clear: both;
+		border: 1px solid transparent;
+		border-right: none;
+		overflow: hidden;
+	}
+	.col-md-2 .nav-tabs > li > a, .col-md-2 .nav-tabs > li > a:hover {
+		border: 1px solid transparent;
+		outline: none;
+		background: none;
+	}
+	.col-md-2 .nav-tabs > li.active {
+		border-color: #ccc;
+		background: #eee;
+	}
+	.col-md-2 .nav-tabs > li > span {
+		padding-top: 7px;
+		padding-right: 7px;
+	}
+	
+	a.cke_button {
+		height: 26px !important;
+	}
+	
+	.scrollbox {
+		height: 150px;
+		width: 300px;
+		overflow-y: scroll;
+		overflow-x: auto;
+		border: 1px solid #ccc;
+	}
+	
+	.scrollbox > div {
+		padding: 2px 5px;
+		white-space: nowrap;
+	}
+	
+	.scrollbox > div input {
+		vertical-align: middle;
+		margin: 0 5px 0 0;
+	}
+	
+	.help {
+		display: block;
+		font-size: 11px;
+		color: #666666;
+	}
+	
+	.nav-tabs-v > li.active > a,
+	.nav-tabs-v > li.active > a:hover,
+	.nav-tabs-v > li.active > a:focus {
+		background: none !important;
+		outline-style: none !important;
+		border-color: transparent !important;
+	}
+</style>
+
+<script type="text/javascript" src="view/javascript/html-code/ckeditor/ckeditor.js"></script> 
+<script type="text/javascript"><!--
+	var module_row = {{module_row}};
+	
+	$('.nav-tabs').each(function(){
+		$(this).find('> li:first a[data-toggle]').tab('show');
+	});
+	
+	$('#content a[rel^=description]').each(function(){
+		var rel		= $(this).attr('rel'),
+			$status	= $('#' + rel.replace('description', 'texteditor'));
+		
+		if( $status.val() != '1' ) {
+			
+		} else {
+			CKEDITOR.replace( $(this).attr('rel'), {
+				filebrowserBrowseUrl: 'index.php?route=common/filemanager&user_token={{user_token}}',
+				filebrowserImageBrowseUrl: 'index.php?route=common/filemanager&user_token={{user_token}}',
+				filebrowserFlashBrowseUrl: 'index.php?route=common/filemanager&user_token={{user_token}}',
+				filebrowserUploadUrl: 'index.php?route=common/filemanager&user_token={{user_token}}',
+				filebrowserImageUploadUrl: 'index.php?route=common/filemanager&user_token={{user_token}}',
+				filebrowserFlashUploadUrl: 'index.php?route=common/filemanager&user_token={{user_token}}',
+				enterMode : CKEDITOR.ENTER_BR,
+				shiftEnterMode: CKEDITOR.ENTER_P//,
+			//	on: {
+		// instanceReady: function() {
+		//     this.setMode('source'); 
+		// }}
+			});
+		}
+	});
+
+////////////////////////////////////////////////////////////////////////////////
+
+$(document).on('click', '.scrollbox div a', function() {
+	var $self	= $(this),
+		$parent	= $self.parent(),
+		$box	= $parent.parent();
+		
+	$parent.remove();
+	
+	//$box.find('div:odd').attr('class', 'odd');
+	//$box.find('div:even').attr('class', 'even');
+});
+
+////////////////////////////////////////////////////////////////////////////////
+	
+	function init_inputs() {
+		$('#content select[id^=mode]').unbind('change').bind('change', function(){
+			var id = $(this).attr('id').split('-');
+
+			$('tr[id^=header-' + id[1] + ']')[$(this).val() == 'box'?'show':'hide']();
+		});
+		
+		$('#content input[type=checkbox][id^=layout_id-]').unbind('change').bind('change', function(){
+			var id	= $(this).attr('id').split('-');
+			
+			$('#content input[type=checkbox][id^=layout_id-' + id[1] + '][value={{settings['html_code_layout_c']}}]').each(function(){
+				$('tr[id=category_id-' + id[1] + ']')[$(this).is(':checked')?'show':'hide']();
+			});
+			
+			$('#content input[type=checkbox][id^=layout_id-' + id[1] + '][value={{settings['html_code_layout_i']}}]').each(function(){
+				$('tr[id=information_id-' + id[1] + ']')[$(this).is(':checked')?'show':'hide']();
+			});
+			
+			$('#content input[type=checkbox][id^=layout_id-' + id[1] + '][value={{settings['html_code_layout_p']}}]').each(function(){
+				$('tr[id=products_id-input-' + id[1] + '],tr[id=products_id-list-' + id[1] + ']')[$(this).is(':checked')?'show':'hide']();
+			});
+		});		
+
+		// Filter
+		$('input[name="product-name"]:not([autocomplete])').each(function(){
+			var $this = $(this),
+				id = $(this).parent().parent().attr('id'),
+				nr = id.split('-')[2],
+				$c = $('#products_id-list-' + nr).find('.scrollbox');
+			
+			$(this).attr('autocomplete','1').autocomplete({
+				delay: 500,
+				source: function(request, response) {
+					$.ajax({
+						url: 'index.php?route=catalog/product/autocomplete&user_token={{user_token}}&filter_name=' +  encodeURIComponent($this.val()),
+						dataType: 'json',
+						success: function(json) {		
+							response($.map(json, function(item) {
+								return {
+									label: item.name,
+									value: item.product_id
+								}
+							}));
+						}
+					});
+				}, 
+				select: function(item) {
+					$c.find('input[value=' + item.value + ']').parent().remove();
+
+					$c.append('<div><a class="btn btn-xs" style="color: red"><i class="fa fa-minus-circle"></i></a>' + item.label + '<input type="hidden" name="html_code_module[product_id][]" value="' + item.value + '" /></div>');
+
+					//$c.find('div:odd').attr('class', 'odd');
+					//$c.find('div:even').attr('class', 'even');
+
+					return false;
+				},
+				focus: function(item) {
+				return false;
+			}
+			});
+		});
+		
+		$('#content input.html_tab_name').unbind('change keyup').bind('change keyup', function(){
+			var val = $(this).val(),
+				id	= $(this).attr('id').split('-')[1];
+			
+			if( ! val )
+				val = '{{tab_module}} ' + id;
+			
+			$('#module-' + id).find('b').text( val );
+		}).trigger('change');
+		
+		$('#content a[rel^=description]').css({
+			'float'	: 'right',
+			'margin-bottom'	: '5px'
+		}).unbind('click').bind('click', function(){
+			var rel		= $(this).attr('rel'),
+				$status	= $('#' + rel.replace('description', 'texteditor')),
+				status	= $status.val();
+			
+			if( status == '1' ) {
+				if( typeof CKEDITOR.instances[rel] != 'undefined' ) {
+					$('#'+rel).val( CKEDITOR.instances[rel].getData() );
+					CKEDITOR.instances[rel].destroy();
+				}
+			} else {
+				CKEDITOR.replace( rel, {
+					filebrowserBrowseUrl: 'index.php?route=common/filemanager&user_token={{user_token}}',
+					filebrowserImageBrowseUrl: 'index.php?route=common/filemanager&user_token={{user_token}}',
+					filebrowserFlashBrowseUrl: 'index.php?route=common/filemanager&user_token={{user_token}}',
+					filebrowserUploadUrl: 'index.php?route=common/filemanager&user_token={{user_token}}',
+					filebrowserImageUploadUrl: 'index.php?route=common/filemanager&user_token={{user_token}}',
+					filebrowserFlashUploadUrl: 'index.php?route=common/filemanager&user_token={{user_token}}',
+					enterMode : CKEDITOR.ENTER_BR,
+					shiftEnterMode: CKEDITOR.ENTER_P
+				});
+			}
+			
+			$status.val(status=='1'?'0':'1');
+			
+			return false;
+		});
+	}
+	
+	init_inputs();
+
+function addModule() {	
+	html  = '<div id="tab-module-' + module_row + '">';
+	html += '<table class="table">';
+    html += '   <tr>';
+    html += '       <td width="150">{{text_name}}</td>';
+    html += '       <td><input type="text" class="html_tab_name form-control" name="html_code_module[name]" value="" id="name-' + module_row + '" />';
+	html += '		</td>';
+    html += '      </tr>';
+    html += '   <tr>';
+    html += '       <td>{{text_mode}}</td>';
+    html += '       <td><select name="html_code_module[mode]" id="mode-' + module_row + '" class="form-control">';
+	html += '				<option value="none">{{text_mode_none}}</option>';
+	html += '				<option value="box">{{text_mode_box}}</option>';
+	html += '			</select>';
+	html += '		</td>';
+    html += '      </tr>';
+	html += '	</table>';
+	
+	html += '  <ul id="language-' + module_row + '" class="nav nav-tabs">';
+	
+    {% set k = 0  %}
+	{% for language in languages %}
+	
+    html += '    <li{% if k %} class="nav-item" {% else %} class="nav-item active" {% endif %}><a data-toggle="tab" href="#tab-language-'+ module_row + '-{{language['language_id']}}"{% if k %} class="nav-link" {% else %} class="nav-link active" {% endif %}><img src="{% if flag %}language/{{language['code']}}/{{language['code']}}.png{% else %}view/image/flags/{{language['image']}}{% endif %}" title="{{language['name']}}" /> {{language['name']}}</a></li>';
+  
+	{% set k = k + 1 %}
+	{% endfor %}
+	
+	html += '  </ul>';
+
+	html += '<div class="tab-content">';
+	
+	{% set k = 0  %}
+	{% for language in languages %}	
+	html += '    <div class="tab-pane{% if k %} {% else %} active{% endif %}" id="tab-language-'+ module_row + '-{{language['language_id']}}">';
+	html += '      <table class="table">';
+    html += '          <tr id="header-' + module_row + '-{{language['language_id']}}" style="display:none">';
+    html += '            <td>{{text_header}}</td>';
+    html += '            <td><input type="text" style="width: 400px" name="html_code_module[header][{{language['language_id']}}]" value="" /></td>';
+    html += '          </tr>';
+	html += '        <tr>';
+	html += '          <td width="200">{{heading_title}}</td>';
+	html += '          <td><input type="hidden" id="texteditor-' + module_row + '-{{language['language_id']}}" name="html_code_module[texteditor][{{language['language_id']}}]" value="1" />';
+	html += '<a href="#" rel="description-' + module_row + '-{{language['language_id']}}">';
+	html += '					{{text_enable_disable_texteditor}}';
+	html += '				</a><div style="clear: both;"></div>';
+	html += '<textarea style="width:100%; height:300px" name="html_code_module[description][{{language['language_id']}}]" id="description-' + module_row + '-{{language['language_id']}}"></textarea></td>';
+	html += '        </tr>';
+	html += '      </table>';
+	html += '    </div>';
+	{% set k = k + 1 %} 
+	{% endfor %}
+	html += '</div>';
+
+	html += '  <table class="table">';
+	html += '    <tr>';
+	html += '      <td width="200">{{entry_layout}}<span class="help">{{text_checkbox_guide}}</span></td>';
+	html += '      <td>';
+	html += '			  <div class="scrollbox">';
+	
+	{% for layout_id, layout in layouts %}
+								
+	html += '					<div class="{% if layout_id is divisible by(2) %}even{% else %}odd{% endif %}">';
+	html += '						<input type="checkbox" value="{{layout['layout_id']}}" id="layout_id-' + module_row + '" name="html_code_module[layout_id][]" />';
+	html += '							   {{layout['name']}}';
+	html += '					</div>';
+	{% endfor %}
+	html += '			  </div>';
+	html += '			  ';
+	html += '			  <a onclick="$(this).parent().find(\':checkbox\').attr(\'checked\', true).trigger(\'change\');">Select All</a>';
+	html += ' / ';
+	html += '<a onclick="$(this).parent().find(\':checkbox\').attr(\'checked\', false).trigger(\'change\');">Unselect All</a></td>';
+	html += '    </tr>';
+    html += '       <tr id="category_id-' + module_row + '" style="display:none">';
+    html += '         <td>{{entry_show_in_categories}}<span class="help">{{text_checkbox_guide}}</span></td>';
+    html += '         <td>';
+	html += '			  <div class="scrollbox">';
+	
+	{% for category_id, category in categories %}
+		html += '					<div class="{% if category_id is divisible by(2) %}even{% else %}odd{% endif %}">';
+		html += '						<input type="checkbox" value="{{category['category_id']}}" name="html_code_module[category_id][]" />';
+		html += '{{category['name']}}';
+		html += '					</div>';
+	{% endfor %}
+	html += '			  </div>';
+				  
+	html += '			  <a onclick="$(this).parent().find(\':checkbox\').attr(\'checked\', true);">Select All</a>';
+	html += ' / ';
+	html += '<a onclick="$(this).parent().find(\':checkbox\').attr(\'checked\', false);">Unselect All</a>';
+	html += '		  </td>';
+    html += '        </tr>';
+    html += '       <tr id="information_id-' + module_row + '" style="display:none">';
+    html += '         <td>{{entry_show_in_informations}}<span class="help">{{text_checkbox_guide}}</span></td>';
+    html += '         <td>';
+	html += '			  <div class="scrollbox">';
+	
+	{% for information_id, information in informations %}
+		html += '					<div class="{% if information_id is divisible by(2) %}even{% else %}odd{% endif %}">';
+		html += '						<input type="checkbox" value="{{information['information_id']}}" name="html_code_module[information_id][]" />';
+		html += '{{information['title']}}';
+		html += '					</div>';
+	{% endfor %}
+	html += '			  </div>';
+				  
+	html += '			  <a onclick="$(this).parent().find(\':checkbox\').attr(\'checked\', true);">Select All</a>';
+	html += '/';
+	html += '<a onclick="$(this).parent().find(\':checkbox\').attr(\'checked\', false);">Unselect All</a>';
+	html += '		  </td>';
+    html += '        </tr>';
+	
+	html += '<tr id="products_id-input-' + module_row + '" style="display:none;">';
+	html += '	<td>{{entry_products}}<span class="help">{{text_autocomplete}}</span></td>';
+    html += '   <td><input type="text" name="product-name" value="" class="form-control" /></td>';
+    html += '</tr>';
+    html += '<tr id="products_id-list-' + module_row + '" style="display:none;">';
+    html += '	<td><span class="help">{{text_checkbox_guide}}</span></td>';
+    html += '   <td>';
+	html += '		<div class="scrollbox"></div>';
+	html += '	</td>';
+    html += '</tr>';
+	
+	html += '    <tr>';
+	html += '      <td>{{entry_store}}</td>';
+	html += '      <td>';
+	html += '			  <div class="scrollbox">';
+	
+	{% for store_id, store in stores %}
+	html += '					<div class="{% if store_id is divisible by(2) %}even{% else %}odd{% endif %}">';
+	html += '						<input type="checkbox" value="{{store['store_id']}}" name="html_code_module[store_id][]" />';
+	html += '							   {{store['name']}}';
+	html += '					</div>';
+	{% endfor %}
+	html += '			  </div>';
+	html += '			  ';
+	html += '			  <a onclick="$(this).parent().find(\':checkbox\').attr(\'checked\', true);">Select All</a>';
+	html += ' / ';
+	html += '<a onclick="$(this).parent().find(\':checkbox\').attr(\'checked\', false);">Unselect All</a></td>';
+	html += '    </tr>';
+	
+	html += '    <tr>';
+	html += '      <td>{{entry_customer_group}}<span class="help">{{text_checkbox_guide}}</span></td>';
+	html += '      <td>';
+	html += '			  <div class="scrollbox">';
+	
+	
+	{% for customer_group_id, customer_group in customer_groups %}
+	html += '					<div class="{% if customer_group_id is divisible by(2) %}even{% else %}odd{% endif %}">';
+	html += '						<input type="checkbox" value="{{customer_group['customer_group_id']}}" name="html_code_module[customer_group_id][]" />';
+	html += '							   {{customer_group['name']}}';
+	html += '					</div>';
+	{% endfor %}
+	html += '			  </div>';
+	html += '			  ';
+	html += '			  <a onclick="$(this).parent().find(\':checkbox\').attr(\'checked\', true);">Select All</a>';
+	html += ' / ';
+	html += '<a onclick="$(this).parent().find(\':checkbox\').attr(\'checked\', false);">Unselect All</a></td>';
+	html += '    </tr>';
+	
+	html += '    <tr>';
+	html += '      <td>{{entry_position}}</td>';
+	html += '      <td><select name="html_code_module[position]" class="form-control">';
+	html += '        <option value="content_top">{{text_content_top}}</option>';
+	html += '        <option value="content_bottom">{{text_content_bottom}}</option>';
+	html += '        <option value="column_left">{{text_column_left}}</option>';
+	html += '        <option value="column_right">{{text_column_right}}</option>';
+	html += '        <option value="header_top">{{text_header_top}}</option>';
+	html += '        <option value="header_bottom">{{text_header_bottom}}</option>';
+	html += '        <option value="footer_top">{{text_footer_top}}</option>';
+	html += '        <option value="footer_bottom">{{text_footer_bottom}}</option>';
+	html += '      </select></td>';
+	html += '    </tr>';
+	html += '    <tr>';
+	html += '      <td>{{entry_php}}</td>';
+	html += '      <td><select name="html_code_module[php]" class="form-control">';
+	html += '        <option value="0">{{text_disabled}}</option>';
+	html += '        <option value="1">{{text_enabled}}</option>';
+	html += '      </select></td>';
+	html += '    </tr>';
+	html += '    <tr>';
+	html += '      <td>{{entry_status}}</td>';
+	html += '      <td><select name="html_code_module[status]" class="form-control">';
+	html += '        <option value="1">{{text_enabled}}</option>';
+	html += '        <option value="0">{{text_disabled}}</option>';
+	html += '      </select></td>';
+	html += '    </tr>';
+	html += '    <tr>';
+	html += '      <td>{{entry_sort_order}}</td>';
+	html += '      <td><input type="text" name="html_code_module[sort_order]" value="" size="3" class="form-control" /></td>';
+	html += '    </tr>';
+	html += '  </table>'; 
+	html += '</div>';
+	
+	$('#form-html .col-md-12:first .tab-content:first').append(html);
+	
+	$('#module-add').hide();
+	
+	init_inputs();
+	
+	{% for language in languages %}
+	CKEDITOR.replace('description-' + module_row + '-{{language['language_id']}}', {
+		filebrowserBrowseUrl: 'index.php?route=common/filemanager&user_token={{user_token}}',
+		filebrowserImageBrowseUrl: 'index.php?route=common/filemanager&user_token={{user_token}}',
+		filebrowserFlashBrowseUrl: 'index.php?route=common/filemanager&user_token={{user_token}}',
+		filebrowserUploadUrl: 'index.php?route=common/filemanager&user_token={{user_token}}',
+		filebrowserImageUploadUrl: 'index.php?route=common/filemanager&user_token={{user_token}}',
+		filebrowserFlashUploadUrl: 'index.php?route=common/filemanager&user_token={{user_token}}'
+	});  
+	{% endfor %}
+	
+	$('#module-' + module_row).trigger('click');
+	
+	module_row++;
+}
+//--></script> 
+
+
+{{ footer }}
