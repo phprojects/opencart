@@ -34,6 +34,7 @@ abstract class Controller {
 		$this->registry->set($key, $value);
 	}
 
+	//[admpub]
 	public function json($json = null) {
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
