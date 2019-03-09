@@ -1500,7 +1500,7 @@ div.new-item.button {
 /******************************
  VARIABLES
 *******************************/
-.page ::before, .modal ::before, .ant-popover ::before, .ant-modal ::before {
+.page ::before, /*.modal ::before, */.ant-popover ::before, .ant-modal ::before {
   font-family: 'icomoon';
   font-weight: 400;
   text-rendering: auto;
@@ -2574,9 +2574,9 @@ li.subitem {
         -ms-flex-pack: center;
             justify-content: center;
     padding: 4px 3px;
-    color: #6c7f96; }
+    color: #6c7f96 !important; }
     .accordion-buttons .button:hover {
-      color: white; }
+      color: white !important; }
     .accordion-buttons .button i {
       font-size: 12px; }
       .accordion-buttons .button i::before {
@@ -3081,6 +3081,7 @@ a.grad {
       -webkit-animation: fa-spin 2s infinite linear;
               animation: fa-spin 2s infinite linear; }
   .edit-btn i {
+    color: white;
     font-size: 15px;
     margin-right: 0;
     display: -webkit-box;
@@ -4870,7 +4871,7 @@ div.icon-popover .ant-popover-content > .ant-popover-arrow {
 .list-remove-btn {
   width: 30px;
   height: calc(100% - 20px);
-  color: white;
+  color: white !important;
   background: #27ae60;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4903,7 +4904,7 @@ div.icon-popover .ant-popover-content > .ant-popover-arrow {
   .list-add-btn:hover,
   .list-remove-btn:hover {
     background: #30a3ca;
-    color: white; }
+    color: white !important; }
   .list-add-btn:active,
   .list-remove-btn:active {
     -webkit-box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.3);
