@@ -94,3 +94,6 @@
 # Upload Files
 /storage/upload/*
 !/storage/upload/index.html
+
+.DS_Store
+
