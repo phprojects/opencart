@@ -1,5 +1,5 @@
 <?php
-define('SITE_HOST',$_SERVER['HTTP_HOST'].(in_array($_SERVER['SERVER_PORT'],[80,443])?'':':'.$_SERVER['SERVER_PORT']));
+define('SITE_HOST',$_SERVER['HTTP_HOST']);
 define('DIR_PUBLIC',__DIR__);
 define('DIR_ROOT',dirname(__DIR__));
 

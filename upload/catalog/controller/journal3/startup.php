@@ -87,11 +87,11 @@ class ControllerJournal3Startup extends Controller {
 			// bootstrap
 			if ($this->journal3->isOC1()) {
 				$this->journal3->document->addStyle('catalog/view/theme/journal3/lib/bootstrap/css/bootstrap.min.css');
-				$this->journal3->document->addStyle('catalog/view/theme/journal3/lib/font-awesome/css/font-awesome.min.css');
+				$this->journal3->document->addStyle('catalog/view/theme/journal3/lib/font-awesome/css/fontawesome.min.css');
 				$this->journal3->document->addScript('catalog/view/theme/journal3/lib/bootstrap/js/bootstrap.min.js');
 			} else {
 				$this->journal3->document->addStyle('catalog/view/javascript/bootstrap/css/bootstrap.min.css');
-				$this->journal3->document->addStyle('catalog/view/javascript/font-awesome/css/font-awesome.min.css');
+				$this->journal3->document->addStyle('catalog/view/javascript/font-awesome/css/fontawesome.min.css');
 
 				if ($this->journal3->isOC31()) {
 					$this->journal3->document->addScript('catalog/view/javascript/bootstrap/js/popper.min.js');
