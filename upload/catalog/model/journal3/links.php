@@ -41,11 +41,10 @@ class ModelJournal3Links extends \Journal3\Opencart\Model {
 				$page = Arr::get($link, 'page');
 
 				if ($page) {
-					if (version_compare(VERSION, '2', '>=') && $page === 'account/return/insert') {
+					if ($page === 'account/return/insert') {
 						$page = 'account/return/add';
 					}
-
-					if (version_compare(VERSION, '3', '>=') && $page === 'affiliate/account') {
+					elseif ($page === 'affiliate/account') {
 						$page = 'affiliate/login';
 					}
 

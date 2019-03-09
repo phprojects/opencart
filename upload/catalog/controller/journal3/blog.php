@@ -332,11 +332,7 @@ class ControllerJournal3Blog extends Controller {
 
 			$data['comments'] = $this->model_journal3_blog->getComments($post_id);
 
-			if (version_compare(VERSION, '2.1', '<')) {
-				$this->load->library('user');
-			} else {
-				$this->user = new \Cart\User($this->registry);
-			}
+			$this->user = new \Cart\User($this->registry);
 
 			if ($this->customer->isLogged()) {
 				$this->load->model('account/customer');

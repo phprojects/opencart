@@ -638,15 +638,9 @@ class ControllerExtensionShippingXshippingpro extends Controller {
                 padding: 0;
             }
         ';
-        if (version_compare(VERSION, '3.0.2.0') > 0) {
-            $data['additional_css'] = $oc_3_1_style;
-            $data['css_display'] = 'flex';
-            $data['dp_option'] = 'locale';
-        } else {
-            $data['additional_css'] = ''; 
-            $data['css_display'] = 'block';
-            $data['dp_option'] = '';
-        }
+        $data['additional_css'] = $oc_3_1_style;
+        $data['css_display'] = 'flex';
+        $data['dp_option'] = 'locale';
         
         $data['header'] = $this->load->controller('common/header');
         $data['column_left'] = $this->load->controller('common/column_left');

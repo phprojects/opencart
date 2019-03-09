@@ -144,38 +144,28 @@ class ControllerExtensionModulemassppriceupd extends Controller
 
         $this->load->model('setting/store');
 
-        if (version_compare(VERSION, '2.0.3.1', '>')) {
-            $this->load->model('customer/customer_group');
-        } else {
-            $this->load->model('sale/customer_group');
-        }
+        $this->load->model('customer/customer_group');
 
-        if (version_compare(VERSION, '1.5.4.1', '>')) {
-            $data['masstxt_p_filters'] = $this->language->get('masstxt_p_filters');
-            $data['masstxt_p_filters_none'] = $this->language->get('masstxt_p_filters_none');
+        $data['masstxt_p_filters'] = $this->language->get('masstxt_p_filters');
+        $data['masstxt_p_filters_none'] = $this->language->get('masstxt_p_filters_none');
 
-            $sql = "SELECT f.filter_id AS `filter_id`, fd.name AS `name`, fgd.name AS `group` FROM " . DB_PREFIX . "filter f 
+        $sql = "SELECT f.filter_id AS `filter_id`, fd.name AS `name`, fgd.name AS `group` FROM " . DB_PREFIX . "filter f 
 		LEFT JOIN " . DB_PREFIX . "filter_description fd ON (f.filter_id = fd.filter_id) 
 		LEFT JOIN " . DB_PREFIX . "filter_group_description fgd ON (f.filter_group_id = fgd.filter_group_id) 
 		LEFT JOIN " . DB_PREFIX . "filter_group fg ON (f.filter_group_id = fg.filter_group_id) 
 		WHERE fd.language_id = '" . (int)$this->config->get('config_language_id') . "' 
 		AND fgd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
-            $sql .= " ORDER BY fg.sort_order, fgd.name, f.sort_order, fd.name";
-            $query_pf = $this->db->query($sql);
-            $data['p_filters'] = $query_pf->rows;
+        $sql .= " ORDER BY fg.sort_order, fgd.name, f.sort_order, fd.name";
+        $query_pf = $this->db->query($sql);
+        $data['p_filters'] = $query_pf->rows;
 
-            if (isset($this->request->post['filters_ids'])) {
-                $data['filters_ids'] = $this->request->post['filters_ids'];
-            } else {
-                $data['filters_ids'] = array();
-            }
-        }
-
-        if (version_compare(VERSION, '2.0.3.1', '>')) {
-            $data['customer_groups'] = $this->model_customer_customer_group->getCustomerGroups();
+        if (isset($this->request->post['filters_ids'])) {
+            $data['filters_ids'] = $this->request->post['filters_ids'];
         } else {
-            $data['customer_groups'] = $this->model_sale_customer_group->getCustomerGroups();
+            $data['filters_ids'] = array();
         }
+
+        $data['customer_groups'] = $this->model_customer_customer_group->getCustomerGroups();
 
         $filter_data_getCategories = array('sort' => 'name');
         $data['categories'] = $this->model_catalog_category->getCategories($filter_data_getCategories);
@@ -1025,13 +1015,7 @@ class ControllerExtensionModulemassppriceupd extends Controller
                 } else {
                     $prfx = " AND ";
                 }
-                if (version_compare(VERSION, '1.5.4.1', '>')) {
-                    $plus_where .= $prfx . "pd.name LIKE '%" . $this->db->escape($this->request->post['filter_name']) . "%'";
-                } elseif (version_compare(VERSION, '1.5.1.2', '>')) {
-                    $plus_where .= $prfx . "LCASE(pd.name) LIKE '%" . $this->db->escape(utf8_strtolower($this->request->post['filter_name'])) . "%'";
-                } else {
-                    $plus_where .= $prfx . "LCASE(pd.name) LIKE '%" . $this->db->escape(strtolower($this->request->post['filter_name'])) . "%'";
-                }
+                $plus_where .= $prfx . "pd.name LIKE '%" . $this->db->escape($this->request->post['filter_name']) . "%'";
             }
 
             if ($this->request->post['filter_model'] != "") { // part of model
@@ -1040,13 +1024,7 @@ class ControllerExtensionModulemassppriceupd extends Controller
                 } else {
                     $prfx = " AND ";
                 }
-                if (version_compare(VERSION, '1.5.4.1', '>')) {
-                    $plus_where .= $prfx . "p.model LIKE '%" . $this->db->escape($this->request->post['filter_model']) . "%'";
-                } elseif (version_compare(VERSION, '1.5.1.2', '>')) {
-                    $plus_where .= $prfx . "LCASE(p.model) LIKE '%" . $this->db->escape(utf8_strtolower($this->request->post['filter_model'])) . "%'";
-                } else {
-                    $plus_where .= $prfx . "LCASE(p.model) LIKE '%" . $this->db->escape(strtolower($this->request->post['filter_model'])) . "%'";
-                }
+                $plus_where .= $prfx . "p.model LIKE '%" . $this->db->escape($this->request->post['filter_model']) . "%'";
             }
 
 
@@ -1056,12 +1034,7 @@ class ControllerExtensionModulemassppriceupd extends Controller
                 } else {
                     $prfx = " AND ";
                 }
-                if (version_compare(VERSION, '1.5.3.1', '>')) {
-                    $plus_where .= $prfx . "LCASE(pd.tag) LIKE '%" . $this->db->escape(utf8_strtolower($this->request->post['filter_tag'])) . "%'";
-                } else {
-                    $plus_join .= " LEFT JOIN " . DB_PREFIX . "product_tag ptag ON (p.product_id = ptag.product_id)";
-                    $plus_where .= $prfx . "LCASE(ptag.tag) LIKE '%" . $this->db->escape(utf8_strtolower($this->request->post['filter_tag'])) . "%'";
-                }
+                $plus_where .= $prfx . "LCASE(pd.tag) LIKE '%" . $this->db->escape(utf8_strtolower($this->request->post['filter_tag'])) . "%'";
             }
 
             if ($this->request->post['filter_sku'] != "") {

@@ -109,7 +109,7 @@ class ModelJournal3Product extends Model {
 
 	public function getProductsCountdown() {
 		if ($this->customer->isLogged()) {
-			$customer_group_id = version_compare(VERSION, '2', '>=') ? $this->customer->getGroupId() : $this->customer->getCustomerGroupId();
+			$customer_group_id = $this->customer->getGroupId();
 		} else {
 			$customer_group_id = $this->config->get('config_customer_group_id');
 		}

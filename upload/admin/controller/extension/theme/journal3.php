@@ -2,11 +2,7 @@
 
 class ControllerExtensionThemeJournal3 extends Controller {
 	public function index() {
-		if (version_compare(VERSION, '3', '>=')) {
-			$this->response->redirect($this->url->link('journal3/journal3', 'user_token=' . $this->session->data['user_token'], true) . '#/dashboard');
-		} else {
-			$this->response->redirect($this->url->link('journal3/journal3', 'token=' . $this->session->data['token'], true) . '#/dashboard');
-		}
+		$this->response->redirect($this->url->link('journal3/journal3', 'user_token=' . $this->session->data['user_token'], true) . '#/dashboard');
 	}
 
 	public function install() {

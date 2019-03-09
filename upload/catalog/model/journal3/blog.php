@@ -344,15 +344,7 @@ class ModelJournal3Blog extends Model {
 		$comment = $this->db->escape(Arr::get($data, 'comment', ''));
 		$status = (int)$this->journal3->settings->get('blogPostApproveComments');
 
-		if (version_compare(VERSION, '2.1', '<')) {
-			$this->load->library('user');
-		}
-
-		if (version_compare(VERSION, '2.2', '>=')) {
-			$this->user = new \Cart\User($this->registry);
-		} else {
-			$this->user = new User($this->registry);
-		}
+		$this->user = new \Cart\User($this->registry);
 
 		if ($this->user->isLogged()) {
 			$customer_id = 0;

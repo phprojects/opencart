@@ -191,12 +191,7 @@ class Controller extends \Controller implements Autocomplete {
 	}
 
 	protected function getAdminToken() {
-		if (version_compare(VERSION, '3', '>=')) {
-			$token = 'user_token=' . $this->session->data['user_token'];
-		} else {
-			$token = 'token=' . $this->session->data['token'];
-		}
-
+		$token = 'user_token=' . $this->session->data['user_token'];
 		return $token;
 	}
 
