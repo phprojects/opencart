@@ -1,0 +1,26 @@
+{
+  "name": {
+    "type": "Input",
+    "value": "New Product Tab"
+  },
+  "status": {
+    "type": "Status"
+  },
+  "type": {
+    "type": "Radio",
+    "value": "custom",
+    "php": true
+  },
+  "filter": {
+    "type": "ProductFilter"
+  },
+  "schedule": {
+    "type": "Range",
+    "php": true
+  },
+  "position": {
+    "type": "Radio",
+    "value": "default",
+    "php": true
+  }
+}
