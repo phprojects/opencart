@@ -3081,7 +3081,7 @@ a.grad {
       -webkit-animation: fa-spin 2s infinite linear;
               animation: fa-spin 2s infinite linear; }
   .edit-btn i {
-    color: white;
+    color: white !important;
     font-size: 15px;
     margin-right: 0;
     display: -webkit-box;
