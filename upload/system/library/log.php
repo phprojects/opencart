@@ -38,4 +38,18 @@ class Log {
 	public function __destruct() {
 		fclose($this->handle);
 	}
+
+	//[admpub]--\
+    public function writeException($e) {
+        if (!is_object($e)) {
+            throw new Exception('Invalid exception object!');
+        }
+        $this->write('PHP Exception: ' . $e->getCode() . ', ' . $e->getMessage());
+        $this->write($e->getFile() . "(line:{$e->getLine()})");
+    }
+
+    private function createDirectory($filePath) {
+        $directory = dirname($filePath);
+        return is_dir($directory) or $this->createDirectory(dirname($directory)) and mkdir($directory, 0777);
+    }
 }
