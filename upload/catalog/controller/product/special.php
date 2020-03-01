@@ -28,7 +28,7 @@ class ControllerProductSpecial extends Controller {
 		if (isset($this->request->get['limit'])) {
 			$limit = (int)$this->request->get['limit'];
 		} else {
-			$limit = $this->config->get('theme_' . $this->config->get('config_theme') . '_product_limit');
+			$limit = $this->config->get('theme_' . $this->config->get('config_theme') . '_pagination');
 		}
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -76,9 +76,9 @@ class ControllerProductSpecial extends Controller {
 			'limit' => $limit
 		);
 
-		$product_total = $this->model_catalog_product->getTotalProductSpecials();
+		$product_total = $this->model_catalog_product->getTotalSpecials();
 
-		$results = $this->model_catalog_product->getProductSpecials($filter_data);
+		$results = $this->model_catalog_product->getSpecials($filter_data);
 
 		foreach ($results as $result) {
 			if (is_file(DIR_IMAGE . html_entity_decode($result['image'], ENT_QUOTES, 'UTF-8'))) {
@@ -201,7 +201,7 @@ class ControllerProductSpecial extends Controller {
 
 		$data['limits'] = array();
 
-		$limits = array_unique(array($this->config->get('theme_' . $this->config->get('config_theme') . '_product_limit'), 25, 50, 75, 100));
+		$limits = array_unique(array($this->config->get('theme_' . $this->config->get('config_theme') . '_pagination'), 25, 50, 75, 100));
 
 		sort($limits);
 

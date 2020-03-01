@@ -268,7 +268,7 @@ class ControllerProductProduct extends Controller {
 
 			$data['images'] = array();
 
-			$results = $this->model_catalog_product->getProductImages($this->request->get['product_id']);
+			$results = $this->model_catalog_product->getImages($this->request->get['product_id']);
 
 			foreach ($results as $result) {
 				if (is_file(DIR_IMAGE . html_entity_decode($result['image'], ENT_QUOTES, 'UTF-8'))) {
@@ -297,7 +297,7 @@ class ControllerProductProduct extends Controller {
 				$data['tax'] = false;
 			}
 
-			$discounts = $this->model_catalog_product->getProductDiscounts($this->request->get['product_id']);
+			$discounts = $this->model_catalog_product->getDiscounts($this->request->get['product_id']);
 
 			$data['discounts'] = array();
 
@@ -317,10 +317,10 @@ class ControllerProductProduct extends Controller {
 				$product_id = (int)$this->request->get['product_id'];
 			}
 
-			$product_options = $this->model_catalog_product->getProductOptions($product_id);
+			$product_options = $this->model_catalog_product->getOptions($product_id);
 
 			foreach ($product_options as $option) {
-				if ((int)$this->request->get['product_id'] && !isset($product_info['variant'][$option['product_option_id']])) {
+				if ((int)$this->request->get['product_id'] && !isset($product_info['override']['variant'][$option['product_option_id']])) {
 					$product_option_value_data = array();
 
 					foreach ($option['product_option_value'] as $option_value) {
@@ -394,11 +394,11 @@ class ControllerProductProduct extends Controller {
 
 			$data['current_link'] = ($this->request->server['HTTPS'] ? 'https://' : 'http://') . $this->request->server['HTTP_HOST'] . $this->request->server['REQUEST_URI'];
 
-			$data['attribute_groups'] = $this->model_catalog_product->getProductAttributes($this->request->get['product_id']);
+			$data['attribute_groups'] = $this->model_catalog_product->getAttributes($this->request->get['product_id']);
 
 			$data['products'] = array();
 
-			$results = $this->model_catalog_product->getProductRelated($this->request->get['product_id']);
+			$results = $this->model_catalog_product->getRelated($this->request->get['product_id']);
 
 			foreach ($results as $result) {
 				if (is_file(DIR_IMAGE . html_entity_decode($result['image'], ENT_QUOTES, 'UTF-8'))) {
@@ -621,7 +621,7 @@ class ControllerProductProduct extends Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
-	public function getRecurringDescription() {
+	public function getDescription() {
 		$this->load->language('product/product');
 
 		if (isset($this->request->post['product_id'])) {

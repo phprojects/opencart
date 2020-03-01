@@ -55,8 +55,6 @@ class ModelCatalogCategory extends Model {
 			}
 		}
 
-		$this->cache->delete('category');
-
 		return $category_id;
 	}
 
@@ -169,8 +167,6 @@ class ModelCatalogCategory extends Model {
 				$this->db->query("INSERT INTO " . DB_PREFIX . "category_to_layout SET category_id = '" . (int)$category_id . "', store_id = '" . (int)$store_id . "', layout_id = '" . (int)$layout_id . "'");
 			}
 		}
-
-		$this->cache->delete('category');
 	}
 
 	public function deleteCategory($category_id) {
@@ -190,8 +186,6 @@ class ModelCatalogCategory extends Model {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_to_category WHERE category_id = '" . (int)$category_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "coupon_category WHERE category_id = '" . (int)$category_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "seo_url WHERE query = 'path=" . $this->db->escape($this->getPath($category_id)) . "'");
-
-		$this->cache->delete('category');
 	}
 
 	public function repairCategories($parent_id = 0) {
@@ -225,7 +219,7 @@ class ModelCatalogCategory extends Model {
 	}
 
 	public function getPath($category_id) {
-		return implode('_', array_column($this->getCategoryPath($category_id), 'path_id'));
+		return implode('_', array_column($this->getPaths($category_id), 'path_id'));
 	}
 
 	public function getCategories($data = array()) {
@@ -271,7 +265,7 @@ class ModelCatalogCategory extends Model {
 		return $query->rows;
 	}
 
-	public function getCategoryDescriptions($category_id) {
+	public function getDescriptions($category_id) {
 		$category_description_data = array();
 
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "category_description WHERE category_id = '" . (int)$category_id . "'");
@@ -289,13 +283,13 @@ class ModelCatalogCategory extends Model {
 		return $category_description_data;
 	}
 	
-	public function getCategoryPath($category_id) {
+	public function getPaths($category_id) {
 		$query = $this->db->query("SELECT category_id, path_id, level FROM " . DB_PREFIX . "category_path WHERE category_id = '" . (int)$category_id . "' ORDER BY level ASC");
 
 		return $query->rows;
 	}
 
-	public function getCategoryFilters($category_id) {
+	public function getFilters($category_id) {
 		$category_filter_data = array();
 
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "category_filter WHERE category_id = '" . (int)$category_id . "'");
@@ -307,7 +301,7 @@ class ModelCatalogCategory extends Model {
 		return $category_filter_data;
 	}
 
-	public function getCategorySeoUrls($category_id) {
+	public function getSeoUrls($category_id) {
 		$category_seo_url_data = array();
 
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "seo_url WHERE query = 'path=" . $this->db->escape($this->getPath($category_id)) . "'");
@@ -319,7 +313,7 @@ class ModelCatalogCategory extends Model {
 		return $category_seo_url_data;
 	}
 
-	public function getCategoryStores($category_id) {
+	public function getStores($category_id) {
 		$category_store_data = array();
 
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "category_to_store WHERE category_id = '" . (int)$category_id . "'");
@@ -331,7 +325,7 @@ class ModelCatalogCategory extends Model {
 		return $category_store_data;
 	}
 	
-	public function getCategoryLayouts($category_id) {
+	public function getLayouts($category_id) {
 		$category_layout_data = array();
 
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "category_to_layout WHERE category_id = '" . (int)$category_id . "'");

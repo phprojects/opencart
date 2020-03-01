@@ -206,8 +206,8 @@ class ControllerMarketplaceMarketplace extends Controller {
 		if ($response_info['promotions'] && $page == 1) {
 			foreach ($response_info['promotions'] as $result) {
 				$data['promotions'][] = array(
-					'name'         => $result['name'],
-					'description'  => $result['description'],
+					'name'         => utf8_decode($result['name']),
+					'description'  => utf8_decode($result['description']),
 					'image'        => $result['image'],
 					'license'      => $result['license'],
 					'price'        => $result['price'],
@@ -650,7 +650,7 @@ class ControllerMarketplaceMarketplace extends Controller {
 
 			if ($response_info['downloads']) {
 				foreach ($response_info['downloads'] as $result) {
-					$extension_install_info = $this->model_setting_extension->getExtensionInstallByExtensionDownloadId($result['extension_download_id']);
+					$extension_install_info = $this->model_setting_extension->getInstallByExtensionDownloadId($result['extension_download_id']);
 
 					if ($extension_install_info) {
 						$extension_install_id = $extension_install_info['extension_install_id'];
@@ -884,7 +884,7 @@ class ControllerMarketplaceMarketplace extends Controller {
 
 					$this->load->model('setting/extension');
 
-					$json['extension_install_id'] = $this->model_setting_extension->addExtensionInstall($response_info['extension'], $extension_id, $extension_download_id);
+					$json['extension_install_id'] = $this->model_setting_extension->addInstall($response_info['extension'], $extension_id, $extension_download_id);
 
 					$json['text'] = $this->language->get('text_install');
 

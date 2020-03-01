@@ -34,6 +34,7 @@
     "symfony/var-dumper": "^3.3",
     "illuminate/support": "^5.4",
     "maximebf/debugbar": "^1.14",
-    "filp/whoops": "^2.1"
+    "filp/whoops": "^2.1",
+    "guzzlehttp/guzzle": "^6.3.3"
   }
 }

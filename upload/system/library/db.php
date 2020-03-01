@@ -79,8 +79,8 @@ class DB {
 	 * 
 	 * @return	bool
      */	
-	public function connected() {
-		return $this->adaptor->connected();
+	public function isConnected() {
+		return $this->adaptor->isConnected();
 	}
 
 	//[admpub]

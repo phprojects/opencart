@@ -42,11 +42,11 @@ class ControllerExtensionModuleFilter extends Controller {
 
 			$data['filter_groups'] = array();
 
-			$filter_groups = $this->model_catalog_category->getCategoryFilters($category_id);
+			$filter_groups = $this->model_catalog_category->getFilters($category_id);
 
 			if ($filter_groups) {
 				foreach ($filter_groups as $filter_group) {
-					$childen_data = array();
+					$children_data = array();
 
 					foreach ($filter_group['filter'] as $filter) {
 						$filter_data = array(
@@ -63,7 +63,7 @@ class ControllerExtensionModuleFilter extends Controller {
 					$data['filter_groups'][] = array(
 						'filter_group_id' => $filter_group['filter_group_id'],
 						'name'            => $filter_group['name'],
-						'filter'          => $childen_data
+						'filter'          => $children_data
 					);
 				}
 

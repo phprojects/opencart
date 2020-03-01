@@ -70,8 +70,8 @@ if (!defined('DIR_ROOT')) {
     define('DIR_ROOT', dirname(DIR_APPLICATION) . '/');
 }
 // Autoloader
-if (is_file(DIR_ROOT . 'vendor/autoload.php')) {
-	require_once(DIR_ROOT . 'vendor/autoload.php');
+if (defined('DIR_STORAGE') && is_file(DIR_STORAGE . 'vendor/autoload.php')) {
+	require_once(DIR_STORAGE . 'vendor/autoload.php');
 }
 
 function library($class) {
